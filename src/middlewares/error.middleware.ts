@@ -1,12 +1,12 @@
 import type { NextFunction, Request, Response } from "express";
-import { HttpError } from "src/errors/http.error.js";
+import { HttpException } from "src/errors/http.error.js";
 import { logger } from "src/utils/winston.util.js";
 
 export const errorMiddleware = (err: unknown, req: Request, res: Response, next: NextFunction) => {
 
     logger.error(`Error ${req.url}`);
 
-    if (err instanceof HttpError) {
+    if (err instanceof HttpException) {
         return res.status(err.status).json({
             err: err.message,
         })

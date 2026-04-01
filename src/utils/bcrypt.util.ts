@@ -1,14 +1,12 @@
 import bcrypt from 'bcrypt'
-
-bcrypt.hash
-
-bcrypt.compare
+import { logger } from './winston.util.js';
 
 export class BcryptUtil {
     private static SECRET: string = process.env['BCRYPTKEY'] || '';
 
     static {
         if (this.SECRET === '') {
+            logger.error('Bcrypt secret key kosong');
             process.exit(0);
         } 
     }

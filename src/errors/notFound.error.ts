@@ -1,7 +1,6 @@
-import { HttpError } from "./http.error.js";
+import { HttpException } from "./http.error.js";
 
-export class NotFoundException extends HttpError {
-
+export class NotFoundException extends HttpException {
     constructor(message: string){
         super(404, message);
     }

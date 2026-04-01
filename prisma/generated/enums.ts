@@ -28,6 +28,7 @@ export type ProductCategory = (typeof ProductCategory)[keyof typeof ProductCateg
 
 
 export const OrderStatus = {
+  READY: 'READY',
   PENDING: 'PENDING',
   ONGOING: 'ONGOING',
   COMPLETED: 'COMPLETED'
@@ -43,3 +44,12 @@ export const PaymentMethod = {
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const OrderTransactionStatus = {
+  PENDING: 'PENDING',
+  CANCELED: 'CANCELED',
+  SUCCESS: 'SUCCESS'
+} as const
+
+export type OrderTransactionStatus = (typeof OrderTransactionStatus)[keyof typeof OrderTransactionStatus]

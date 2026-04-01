@@ -39,6 +39,7 @@ model Product {
 }
 
 enum OrderStatus {
+  READY
   PENDING
   ONGOING
   COMPLETED
@@ -75,6 +76,12 @@ enum PaymentMethod {
   CASH
   QRIS
   CARD  
+}
+
+enum OrderTransactionStatus {
+  PENDING
+  CANCELED
+  SUCCESS
 }
 
 model OrderTransaction {

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon --exec tsx ./src/main.ts"
   },
   "repository": {
     "type": "git",
@@ -21,21 +22,25 @@
   "types": "module",
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.5.0",
+    "nodemon": "^3.1.14",
     "typescript": "^6.0.2"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.6.0",
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "prisma": "^7.6.0",
     "uuid": "^13.0.0",
     "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^5.0.0",
     "zod": "^4.3.6"
   }
 }

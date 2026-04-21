@@ -4,3 +4,5 @@ ToDo.md
 log/
 /generated/prisma
 ./prisma/generated/
+issues/
+prompts/

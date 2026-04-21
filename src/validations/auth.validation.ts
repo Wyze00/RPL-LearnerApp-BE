@@ -1,0 +1,11 @@
+import z, { type ZodType } from "zod";
+import type { PostAuthRegister } from "../types/auth.type.js";
+
+export class AuthValidation {
+    static POSTREGISTER: ZodType<PostAuthRegister> = z.object({
+        username: z.string().min(3).max(50),
+        password: z.string().min(6).max(100),
+        email: z.string().email().max(255),
+        name: z.string().min(1).max(50),
+    });
+}

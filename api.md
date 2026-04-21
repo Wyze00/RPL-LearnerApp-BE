@@ -84,7 +84,7 @@ Response Status 200
 
 ```json
 {
-    "data": { // Buat disimpan oleh react redux di frontend
+    "data": { // Data disimpan oleh react redux di frontend
         "username": "string",
         "roles": "string[]"
     }
@@ -141,6 +141,19 @@ Response Body 200
     }
 }
 ```
+
+### DELETE /api/auth/logout
+
+Header :
+- Cookie: token
+
+Response Body 200
+
+```json
+{
+    "data": "success"
+}
+``` 
 
 ### POST /api/auth/forgot-password/verify
 

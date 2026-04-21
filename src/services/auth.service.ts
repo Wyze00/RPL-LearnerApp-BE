@@ -1,4 +1,4 @@
-import type { PostAuthRegister } from "../types/auth.type.js";
+import type { PostAuthRegister, PostAuthLogin } from "../types/auth.type.js";
 import { prismaClient } from "../utils/prisma.util.js";
 import { ZodUtil } from "../utils/zod.util.js";
 import { AuthValidation } from "../validations/auth.validation.js";
@@ -31,11 +31,47 @@ export class AuthService {
                 email: validatedData.email,
                 name: validatedData.name,
                 learner: {
-                    create: true,
+                    create: {},
                 }
             }
         });
 
         return "success";
+    }
+
+    static async login(data: PostAuthLogin) {
+        const validatedData = ZodUtil.validate(data, AuthValidation.POSTLOGIN);
+
+        const user = await prismaClient.user.findUnique({
+            where: { username: validatedData.username },
+            include: {
+                admin: true,
+                learner: true,
+                instructor: true,
+            }
+        });
+
+        if (!user) {
+            throw new BadRequestError("Username atau password salah");
+        }
+
+        const isPasswordValid = await bcrypt.compare(validatedData.password, user.password);
+        if (!isPasswordValid) {
+            throw new BadRequestError("Username atau password salah");
+        }
+
+        const roles: string[] = [];
+        if (user.admin) roles.push("admin");
+        if (user.learner) roles.push("learner");
+        if (user.instructor) roles.push("instructor");
+
+        if (roles.length === 0) {
+            roles.push("user");
+        }
+
+        return {
+            username: user.username,
+            roles: roles,
+        };
     }
 }

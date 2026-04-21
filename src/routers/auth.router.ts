@@ -1,7 +1,8 @@
 import type { Request, Response, Router } from "express";
 import express from 'express';
 import { AuthService } from "../services/auth.service.js";
-import type { PostAuthRegister } from "../types/auth.type.js";
+import type { PostAuthRegister, PostAuthLogin } from "../types/auth.type.js";
+import { JwtUtil } from "../utils/jwt.util.js";
 
 export class AuthRouter {
     private static router: Router
@@ -20,6 +21,22 @@ export class AuthRouter {
                 data: response,
             });
         })
+
+        this.router.post('/login', async (req: Request, res: Response) => {
+            const data = req.body as PostAuthLogin;
+            const response = await AuthService.login(data);
+
+            const token = await JwtUtil.sign({ username: response.username });
+
+            res.cookie('token', token, {
+                signed: true,
+                httpOnly: true,
+            });
+
+            res.status(200).json({
+                data: response,
+            });
+        });
     }
 
     static getRouter () {

@@ -84,7 +84,7 @@ Response Status 200
 
 ```json
 {
-    "data": { // Buat disimpan oleh react redux di frontend
+    "data": { // Data disimpan oleh react redux di frontend
         "username": "string",
         "roles": "string[]"
     }

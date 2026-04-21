@@ -83,6 +83,15 @@ export class AuthRouterWithAuthentication {
                 data: response,
             });
         });
+
+        this.router.delete('/logout', async (req: RequestWithUsername, res: Response) => {
+            const response = AuthService.logout();
+
+            res.clearCookie('token');
+            res.status(200).json({
+                data: response,
+            });
+        });
     }
 
     static getRouter () {

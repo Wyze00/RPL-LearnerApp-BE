@@ -256,3 +256,53 @@ describe("GET /api/auth/me", () => {
         expect(response.status).toBe(403); 
     });
 });
+
+describe("DELETE /api/auth/logout", () => {
+    let validToken: string = "";
+
+    beforeEach(async () => {
+        await TestDbUtil.deleteUsers();
+        await supertest(app).post("/api/auth/register").send({
+            username: "meuser",
+            password: "password123",
+            email: "meuser@example.com",
+            name: "Me User"
+        });
+
+        const res = await supertest(app).post("/api/auth/login").send({
+            username: "meuser",
+            password: "password123"
+        });
+        validToken = (res.headers['set-cookie'] as any)[0];
+    });
+
+    afterEach(async () => {
+        await TestDbUtil.deleteUsers();
+    });
+
+    it("should successfully logout and clear token", async () => {
+        const response = await supertest(app)
+            .delete("/api/auth/logout")
+            .set("Cookie", validToken);
+
+        // Check response body
+        expect(response.status).toBe(200);
+        expect(response.body.data).toBe("success");
+
+        // Check if cookie is cleared (has Expires in past or Max-Age=0)
+        // Usually express .clearCookie sends something like 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
+        const rawCookies = (response.headers['set-cookie'] as string[]) || [];
+        expect(rawCookies).toBeDefined();
+        const tokenCookie = rawCookies.find(c => c.startsWith('token='));
+        expect(tokenCookie).toBeDefined();
+        expect(tokenCookie).toMatch(/Expires=Thu, 01 Jan 1970/);
+    });
+
+    it("should throw 403 on unauthenticated logout requests", async () => {
+        const response = await supertest(app)
+            .delete("/api/auth/logout");
+
+        expect(response.status).toBe(403);
+    });
+});
+

@@ -167,4 +167,8 @@ export class AuthService {
             roles: roles,
         };
     }
+
+    static logout() {
+        return "success";
+    }
 }

@@ -1,5 +1,5 @@
 import z, { type ZodType } from "zod";
-import type { PostAuthRegister, PostAuthLogin } from "../types/auth.type.js";
+import type { PostAuthRegister, PostAuthLogin, PostAuthForgotPassword, PostAuthForgotPasswordVerify } from "../types/auth.type.js";
 
 export class AuthValidation {
     static POSTREGISTER: ZodType<PostAuthRegister> = z.object({
@@ -12,5 +12,14 @@ export class AuthValidation {
     static POSTLOGIN: ZodType<PostAuthLogin> = z.object({
         username: z.string().min(1),
         password: z.string().min(1)
+    });
+
+    static POSTFORGOTPASSWORD: ZodType<PostAuthForgotPassword> = z.object({
+        email: z.string().email()
+    });
+
+    static POSTFORGOTPASSWORDVERIFY: ZodType<PostAuthForgotPasswordVerify> = z.object({
+        token: z.string().min(1),
+        password: z.string().min(6).max(100)
     });
 }

@@ -1,7 +1,7 @@
 import type { Request, Response, Router } from "express";
 import express from 'express';
 import { AuthService } from "../services/auth.service.js";
-import type { PostAuthRegister, PostAuthLogin } from "../types/auth.type.js";
+import type { PostAuthRegister, PostAuthLogin, PostAuthForgotPassword, PostAuthForgotPasswordVerify } from "../types/auth.type.js";
 import { JwtUtil } from "../utils/jwt.util.js";
 
 export class AuthRouter {
@@ -32,6 +32,24 @@ export class AuthRouter {
                 signed: true,
                 httpOnly: true,
             });
+
+            res.status(200).json({
+                data: response,
+            });
+        });
+
+        this.router.post('/forgot-password', async (req: Request, res: Response) => {
+            const data = req.body as PostAuthForgotPassword;
+            const response = await AuthService.forgotPassword(data);
+
+            res.status(200).json({
+                data: response,
+            });
+        });
+
+        this.router.post('/forgot-password/verify', async (req: Request, res: Response) => {
+            const data = req.body as PostAuthForgotPasswordVerify;
+            const response = await AuthService.forgotPasswordVerify(data);
 
             res.status(200).json({
                 data: response,

@@ -1,5 +1,5 @@
 import supertest from "supertest";
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { app } from "../src/main.js";
 import { TestDbUtil } from "./utils/db.util.js";
 
@@ -101,4 +101,106 @@ describe("POST /api/auth/login", () => {
         expect(response.body.error).toBeDefined();
     });
 });
+
+// Mock mailer util
+vi.mock("../src/utils/mailer.util.js", () => {
+    return {
+        mailer: {
+            sendMail: vi.fn().mockResolvedValue(true)
+        }
+    }
+});
+
+describe("POST /api/auth/forgot-password", () => {
+    beforeEach(async () => {
+        await TestDbUtil.deleteUsers();
+        await supertest(app).post("/api/auth/register").send({
+            username: "forgotuser",
+            password: "password123",
+            email: "forgot@example.com",
+            name: "Forgot User"
+        });
+    });
+
+    afterEach(async () => {
+        await TestDbUtil.deleteUsers();
+        vi.clearAllMocks();
+    });
+
+    it("should successfully send token for existing email", async () => {
+        const payload = {
+            email: "forgot@example.com"
+        };
+        const response = await supertest(app).post("/api/auth/forgot-password").send(payload);
+
+        expect(response.status).toBe(200);
+        expect(response.body.data).toBe("success");
+    });
+
+    it("should reject and throw 400 if email not found", async () => {
+        const payload = {
+            email: "notfound@example.com"
+        };
+        const response = await supertest(app).post("/api/auth/forgot-password").send(payload);
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe("Email tidak ditemukan");
+    });
+});
+
+describe("POST /api/auth/forgot-password/verify", () => {
+    let mockToken: string = "";
+
+    beforeEach(async () => {
+        await TestDbUtil.deleteUsers();
+        await supertest(app).post("/api/auth/register").send({
+            username: "forgotuser2",
+            password: "password123",
+            email: "forgot2@example.com",
+            name: "Forgot User 2"
+        });
+        
+        // request reset token
+        await supertest(app).post("/api/auth/forgot-password").send({ email: "forgot2@example.com" });
+        
+        // Pull token manually via Prisma to verify
+        const { prismaClient } = await import("../src/utils/prisma.util.js");
+        const user = await prismaClient.user.findFirst({ where: { email: "forgot2@example.com" } });
+        mockToken = user!.passwordResetToken!;
+    });
+
+    afterEach(async () => {
+        await TestDbUtil.deleteUsers();
+    });
+
+    it("should successfully reset password with valid token", async () => {
+        const payload = {
+            token: mockToken,
+            password: "newpassword123"
+        };
+        const response = await supertest(app).post("/api/auth/forgot-password/verify").send(payload);
+
+        expect(response.status).toBe(200);
+        expect(response.body.data).toBe("success");
+        
+        // Assert can login with new password
+        const loginResponse = await supertest(app).post("/api/auth/login").send({
+            username: "forgotuser2",
+            password: "newpassword123"
+        });
+        expect(loginResponse.status).toBe(200);
+    });
+
+    it("should throw 400 for invalid token", async () => {
+        const payload = {
+            token: "invalidtokenformat123",
+            password: "newpassword123"
+        };
+        const response = await supertest(app).post("/api/auth/forgot-password/verify").send(payload);
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBeDefined();
+    });
+});
+
 

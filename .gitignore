@@ -3,3 +3,4 @@ ToDo.md
 .env
 log/
 /generated/prisma
+./prisma/generated/

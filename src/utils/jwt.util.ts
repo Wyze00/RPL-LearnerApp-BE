@@ -8,12 +8,14 @@ export class JwtUtil {
     static {
         if (this.SECRET === '') {
             logger.error('Jwt secret key kosong');
-            process.exit(0);
+            process.exit(1);
         } 
     }
 
     static async sign (data: string | object): Promise<string> {
-        return jwt.sign(data, JwtUtil.SECRET);
+        return jwt.sign(data, JwtUtil.SECRET, {
+            expiresIn: '1h'
+        });
     }
 
     static async verify (token: string): Promise<any> {

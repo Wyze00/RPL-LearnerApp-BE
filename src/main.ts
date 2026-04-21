@@ -6,7 +6,7 @@ import { logMiddleware } from './middlewares/log.middleware.js';
 import { logger } from './utils/winston.util.js';
 import { TemplateRouter } from './routers/template.router.js';
 
-const app = express();
+export const app = express();
 
 // Middleware
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use(cookieParser(signedCookieKey));
 app.use(logMiddleware);
 
 // Router
-app.use('/api/templates', TemplateRouter.getRouter());
+app.use('/api/templates/', TemplateRouter.getRouter());
 // Router
 
 // Error middleware

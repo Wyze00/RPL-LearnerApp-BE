@@ -24,6 +24,7 @@ export class TemplateService {
 
     static mapTemplate(template: Template) {
         return {
+            id: template.id,
             name: template.name,
         }
     }

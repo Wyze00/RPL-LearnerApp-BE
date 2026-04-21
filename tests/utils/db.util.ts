@@ -6,7 +6,7 @@ export class TestDbUtil {
             where: {
                 user: {
                     username: {
-                        in: ["testuser", "loginuser", "forgotuser", "forgotuser2"]
+                        in: ["testuser", "loginuser", "forgotuser", "forgotuser2", "meuser"]
                     }
                 }
             }
@@ -15,7 +15,7 @@ export class TestDbUtil {
         await prismaClient.user.deleteMany({
             where: {
                 username: {
-                    in: ["testuser", "loginuser", "forgotuser", "forgotuser2"]
+                    in: ["testuser", "loginuser", "forgotuser", "forgotuser2", "meuser"]
                 }
             }
         });

@@ -204,3 +204,55 @@ describe("POST /api/auth/forgot-password/verify", () => {
 });
 
 
+describe("GET /api/auth/me", () => {
+    let validToken: string = "";
+
+    beforeEach(async () => {
+        await TestDbUtil.deleteUsers();
+        // pre-register and login user
+        await supertest(app).post("/api/auth/register").send({
+            username: "meuser",
+            password: "password123",
+            email: "meuser@example.com",
+            name: "Me User"
+        });
+
+        const res = await supertest(app).post("/api/auth/login").send({
+            username: "meuser",
+            password: "password123"
+        });
+
+        validToken = (res.headers['set-cookie'] as any)[0];
+    });
+
+    afterEach(async () => {
+        await TestDbUtil.deleteUsers();
+    });
+
+    it("should successfully retrieve user info mapped into {username, roles} on valid token", async () => {
+        const response = await supertest(app)
+            .get("/api/auth/me")
+            .set("Cookie", validToken);
+
+        expect(response.status).toBe(200);
+        expect(response.body.data).toBeDefined();
+        expect(response.body.data.username).toBe("meuser");
+        expect(response.body.data.roles).toContain("learner");
+    });
+
+    it("should reject and throw 403 when no cookie is sent", async () => {
+        const response = await supertest(app).get("/api/auth/me");
+
+        expect(response.status).toBe(403);
+    });
+
+    it("should reject and throw whatever exception on tampered/invalid token", async () => {
+        const invalidCookie = validToken.replace(/token=[^;]+/, 'token=TamperedTokenValueHere');
+        
+        const response = await supertest(app)
+            .get("/api/auth/me")
+            .set("Cookie", invalidCookie);
+
+        expect(response.status).toBe(403); 
+    });
+});

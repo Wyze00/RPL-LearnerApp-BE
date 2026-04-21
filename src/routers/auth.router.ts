@@ -3,6 +3,8 @@ import express from 'express';
 import { AuthService } from "../services/auth.service.js";
 import type { PostAuthRegister, PostAuthLogin, PostAuthForgotPassword, PostAuthForgotPasswordVerify } from "../types/auth.type.js";
 import { JwtUtil } from "../utils/jwt.util.js";
+import { authenticationMiddleware } from "../middlewares/authentication.middleware.js";
+import type { RequestWithUsername } from "../types/express.type.js";
 
 export class AuthRouter {
     private static router: Router
@@ -50,6 +52,32 @@ export class AuthRouter {
         this.router.post('/forgot-password/verify', async (req: Request, res: Response) => {
             const data = req.body as PostAuthForgotPasswordVerify;
             const response = await AuthService.forgotPasswordVerify(data);
+
+            res.status(200).json({
+                data: response,
+            });
+        });
+    }
+
+    static getRouter () {
+        return this.router;
+    }
+}
+
+export class AuthRouterWithAuthentication {
+    private static router: Router
+
+    static {
+        this.router = express.Router(); 
+        this.init();
+    }
+
+    static init() {
+        this.router.use(authenticationMiddleware);
+
+        this.router.get('/me', async (req: RequestWithUsername, res: Response) => {
+            const username = req.username!;
+            const response = await AuthService.getMe(username);
 
             res.status(200).json({
                 data: response,

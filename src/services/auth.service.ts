@@ -138,4 +138,33 @@ export class AuthService {
 
         return "success";
     }
+
+    static async getMe(username: string) {
+        const user = await prismaClient.user.findUnique({
+            where: { username },
+            include: {
+                admin: true,
+                learner: true,
+                instructor: true,
+            }
+        });
+
+        if (!user) {
+            throw new BadRequestError("User tidak ditemukan");
+        }
+
+        const roles: string[] = [];
+        if (user.admin) roles.push("admin");
+        if (user.learner) roles.push("learner");
+        if (user.instructor) roles.push("instructor");
+
+        if (roles.length === 0) {
+            roles.push("user");
+        }
+
+        return {
+            username: user.username,
+            roles: roles,
+        };
+    }
 }

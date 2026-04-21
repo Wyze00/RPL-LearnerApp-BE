@@ -6,7 +6,7 @@ import { logMiddleware } from './middlewares/log.middleware.js';
 import { logger } from './utils/winston.util.js';
 import { TemplateRouter } from './routers/template.router.js';
 
-import { AuthRouter } from './routers/auth.router.js';
+import { AuthRouter, AuthRouterWithAuthentication } from './routers/auth.router.js';
 
 export const app = express();
 
@@ -28,6 +28,7 @@ app.use(logMiddleware);
 // Router
 app.use('/api/templates/', TemplateRouter.getRouter());
 app.use('/api/auth/', AuthRouter.getRouter());
+app.use('/api/auth/', AuthRouterWithAuthentication.getRouter());
 // Router
 
 // Error middleware

@@ -1,0 +1,536 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.4 [39m[90mC:/Users/Nathan/OneDrive/Documents/belajar/Project/RPL - LearnerApp/RPL - LearnerAppBE[39m
+
+[90mstdout[2m | tests/auth.test.ts
+[22m[39mApplication Start
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.268Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.277Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.323Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"testuser","password":"password123","email":"testuser@example.com","name":"Test User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.356Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.505Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.521Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.524Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.529Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.551Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould register successfully with correct payload
+[22m[39m[2026-04-21T08:45:34.558Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 when missing required fields
+[22m[39m[2026-04-21T08:45:34.562Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 when missing required fields
+[22m[39m[2026-04-21T08:45:34.564Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 when missing required fields
+[22m[39m[2026-04-21T08:45:34.571Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"testuser"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 when missing required fields
+[22m[39m[2026-04-21T08:45:34.575Z] [error] [Error /api/auth/register]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 when missing required fields
+[22m[39m[2026-04-21T08:45:34.582Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 when missing required fields
+[22m[39m[2026-04-21T08:45:34.585Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.587Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.590Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.596Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"testuser","password":"password123","email":"testuser@example.com","name":"Test User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.599Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.708Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.709Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.711Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.712Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.721Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"testuser","password":"password123","email":"testuser@example.com","name":"Test User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.724Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.725Z] [error] [Error /api/auth/register]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.730Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/register[2m > [22m[2mshould return 400 if user already exists
+[22m[39m[2026-04-21T08:45:34.733Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.736Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.738Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.744Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"loginuser","password":"password123","email":"loginuser@example.com","name":"Login User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.746Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.853Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.854Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.856Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.857Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.866Z] [info] [Request masuk [Url : /api/auth/login] [Method : POST] [Data : {"username":"loginuser","password":"password123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.879Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.882Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.974Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:34.975Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:35.104Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould login successfully and return cookie
+[22m[39m[2026-04-21T08:45:35.108Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.111Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.112Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.118Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"loginuser","password":"password123","email":"loginuser@example.com","name":"Login User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.120Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.229Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.231Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.232Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.233Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.242Z] [info] [Request masuk [Url : /api/auth/login] [Method : POST] [Data : {"username":"loginuser","password":"wrongpassword"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.244Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.246Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.246Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.247Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.352Z] [error] [Error /api/auth/login]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.357Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/login[2m > [22m[2mshould reject login if password is wrong
+[22m[39m[2026-04-21T08:45:35.359Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.362Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.364Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.373Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"forgotuser","password":"password123","email":"forgot@example.com","name":"Forgot User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.375Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.483Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.484Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.485Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.487Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.496Z] [info] [Request masuk [Url : /api/auth/forgot-password] [Method : POST] [Data : {"email":"forgot@example.com"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.500Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.508Z] [info] [UPDATE "public"."users" SET "passwordResetToken" = $1, "passwordResetExpired" = $2 WHERE ("public"."users"."id" = $3 AND 1=1) RETURNING "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.514Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould successfully send token for existing email
+[22m[39m[2026-04-21T08:45:35.516Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.519Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.520Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.525Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"forgotuser","password":"password123","email":"forgot@example.com","name":"Forgot User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.527Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.634Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.635Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.637Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.638Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.645Z] [info] [Request masuk [Url : /api/auth/forgot-password] [Method : POST] [Data : {"email":"notfound@example.com"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.647Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.648Z] [error] [Error /api/auth/forgot-password]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.653Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password[2m > [22m[2mshould reject and throw 400 if email not found
+[22m[39m[2026-04-21T08:45:35.656Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.659Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.661Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.666Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"forgotuser2","password":"password123","email":"forgot2@example.com","name":"Forgot User 2"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.669Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.778Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.779Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.781Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.782Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.789Z] [info] [Request masuk [Url : /api/auth/forgot-password] [Method : POST] [Data : {"email":"forgot2@example.com"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.791Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.794Z] [info] [UPDATE "public"."users" SET "passwordResetToken" = $1, "passwordResetExpired" = $2 WHERE ("public"."users"."id" = $3 AND 1=1) RETURNING "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.799Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.804Z] [info] [Request masuk [Url : /api/auth/forgot-password/verify] [Method : POST] [Data : {"token":"9a9e7d10-f685-416c-bd8f-4be428fe55e0","password":"newpassword123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.809Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."passwordResetToken" = $1 AND "public"."users"."passwordResetExpired" > $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.918Z] [info] [UPDATE "public"."users" SET "password" = $1, "passwordResetToken" = $2, "passwordResetExpired" = $3 WHERE ("public"."users"."id" = $4 AND 1=1) RETURNING "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.925Z] [info] [Request masuk [Url : /api/auth/login] [Method : POST] [Data : {"username":"forgotuser2","password":"newpassword123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.928Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.929Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.930Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:35.931Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:36.043Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould successfully reset password with valid token
+[22m[39m[2026-04-21T08:45:36.045Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.049Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.050Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.055Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"forgotuser2","password":"password123","email":"forgot2@example.com","name":"Forgot User 2"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.057Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.166Z] [info] [INSERT INTO "public"."users" ("id","username","password","name","createdAt","email") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.167Z] [info] [INSERT INTO "public"."learners" ("id","user_id") VALUES ($1,$2) RETURNING "public"."learners"."id"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.169Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.170Z] [info] [COMMIT]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.178Z] [info] [Request masuk [Url : /api/auth/forgot-password] [Method : POST] [Data : {"email":"forgot2@example.com"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.180Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.183Z] [info] [UPDATE "public"."users" SET "passwordResetToken" = $1, "passwordResetExpired" = $2 WHERE ("public"."users"."id" = $3 AND 1=1) RETURNING "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired"]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.187Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.193Z] [info] [Request masuk [Url : /api/auth/forgot-password/verify] [Method : POST] [Data : {"token":"invalidtokenformat123","password":"newpassword123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.195Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."passwordResetToken" = $1 AND "public"."users"."passwordResetExpired" > $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.196Z] [error] [Error /api/auth/forgot-password/verify]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.201Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mPOST /api/auth/forgot-password/verify[2m > [22m[2mshould throw 400 for invalid token
+[22m[39m[2026-04-21T08:45:36.203Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.206Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.208Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.212Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"meuser","password":"password123","email":"meuser@example.com","name":"Me User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.215Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.215Z] [error] [Error /api/auth/register]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.222Z] [info] [Request masuk [Url : /api/auth/login] [Method : POST] [Data : {"username":"meuser","password":"password123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.224Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.226Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.227Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.228Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.341Z] [info] [Request masuk [Url : /api/auth/me] [Method : GET] [Data : undefined]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.348Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.349Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.350Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.350Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39mME_RESPONSE { username: [32m'meuser'[39m, roles: [ [32m'user'[39m ] }
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.370Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould successfully retrieve user info mapped into {username, roles} on valid token
+[22m[39m[2026-04-21T08:45:36.372Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.374Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.378Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.382Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"meuser","password":"password123","email":"meuser@example.com","name":"Me User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.384Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.385Z] [error] [Error /api/auth/register]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.392Z] [info] [Request masuk [Url : /api/auth/login] [Method : POST] [Data : {"username":"meuser","password":"password123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.394Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.396Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.396Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.397Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.508Z] [info] [Request masuk [Url : /api/auth/me] [Method : GET] [Data : undefined]]
+[2026-04-21T08:45:36.509Z] [error] [Error /api/auth/me]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.513Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw 403 when no cookie is sent
+[22m[39m[2026-04-21T08:45:36.514Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.516Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.518Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.522Z] [info] [Request masuk [Url : /api/auth/register] [Method : POST] [Data : {"username":"meuser","password":"password123","email":"meuser@example.com","name":"Me User"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.524Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 OR "public"."users"."email" = $2) LIMIT $3 OFFSET $4]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.525Z] [error] [Error /api/auth/register]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.532Z] [info] [Request masuk [Url : /api/auth/login] [Method : POST] [Data : {"username":"meuser","password":"password123"}]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.534Z] [info] [SELECT "public"."users"."id", "public"."users"."username", "public"."users"."password", "public"."users"."name", "public"."users"."description", "public"."users"."createdAt", "public"."users"."deletedAt", "public"."users"."email", "public"."users"."passwordResetToken", "public"."users"."passwordResetExpired" FROM "public"."users" WHERE ("public"."users"."username" = $1 AND 1=1) LIMIT $2 OFFSET $3]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.536Z] [info] [SELECT "public"."admins"."id", "public"."admins"."user_id" FROM "public"."admins" WHERE "public"."admins"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.537Z] [info] [SELECT "public"."learners"."id", "public"."learners"."user_id" FROM "public"."learners" WHERE "public"."learners"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.537Z] [info] [SELECT "public"."instructors"."id", "public"."instructors"."user_id" FROM "public"."instructors" WHERE "public"."instructors"."user_id" = $1 OFFSET $2]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.650Z] [info] [Request masuk [Url : /api/auth/me] [Method : GET] [Data : undefined]]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.651Z] [error] [Error /api/auth/me]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.656Z] [info] [DELETE FROM "public"."learners" WHERE EXISTS(SELECT "t0"."id" FROM "public"."users" AS "t0" WHERE ("t0"."username" IN ($1,$2,$3,$4,$5) AND ("public"."learners"."user_id") = ("t0"."id") AND "t0"."id" IS NOT NULL))]
+
+[90mstdout[2m | tests/auth.test.ts[2m > [22m[2mGET /api/auth/me[2m > [22m[2mshould reject and throw whatever exception on tampered/invalid token
+[22m[39m[2026-04-21T08:45:36.657Z] [info] [DELETE FROM "public"."users" WHERE "public"."users"."username" IN ($1,$2,$3,$4)]
+
+ [31m❯[39m tests/auth.test.ts [2m([22m[2m12 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 2741[2mms[22m[39m
+     [33m[2m✓[22m[39m should register successfully with correct payload [33m 639[2mms[22m[39m
+     [32m✓[39m should return 400 when missing required fields[32m 26[2mms[22m[39m
+     [32m✓[39m should return 400 if user already exists[32m 148[2mms[22m[39m
+     [33m[2m✓[22m[39m should login successfully and return cookie [33m 374[2mms[22m[39m
+     [32m✓[39m should reject login if password is wrong[32m 251[2mms[22m[39m
+     [32m✓[39m should successfully send token for existing email[32m 157[2mms[22m[39m
+     [32m✓[39m should reject and throw 400 if email not found[32m 139[2mms[22m[39m
+     [33m[2m✓[22m[39m should successfully reset password with valid token [33m 389[2mms[22m[39m
+     [32m✓[39m should throw 400 for invalid token[32m 158[2mms[22m[39m
+[31m     [31m×[31m should successfully retrieve user info mapped into {username, roles} on valid token[39m[32m 168[2mms[22m[39m
+     [32m✓[39m should reject and throw 403 when no cookie is sent[32m 143[2mms[22m[39m
+     [32m✓[39m should reject and throw whatever exception on tampered/invalid token[32m 143[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m11 passed[39m[22m[90m (12)[39m
+[2m   Start at [22m 15:45:31
+[2m   Duration [22m 5.01s[2m (transform 492ms, setup 0ms, import 1.78s, tests 2.74s, environment 0ms)[22m
+

@@ -142,6 +142,19 @@ Response Body 200
 }
 ```
 
+### DELETE /api/auth/logout
+
+Header :
+- Cookie: token
+
+Response Body 200
+
+```json
+{
+    "data": "success"
+}
+``` 
+
 ### POST /api/auth/forgot-password/verify
 
 ```json

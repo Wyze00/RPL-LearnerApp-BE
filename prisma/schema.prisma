@@ -3,98 +3,11 @@ generator client {
   output   = "./generated/"
 }
 
-enum Role {
-  ADMIN
-  KITCHEN
-}
-
-model User {
-  id String @id @db.VarChar(100) @default(uuid())
-  username String @db.VarChar(20) @unique
-  password String @db.VarChar(100)
-  role Role
-  createdAt DateTime @default(now())
-  updatedAt DateTime?
-  deletedAt DateTime?
-
-  @@map("users")
-}
-
-enum ProductCategory {
-  AlaCarte
-  Beverage
-  Appetizer
-  Package
-}
-
-model Product {
-  id String @id @db.VarChar(100) @default(uuid())
-  name String @db.VarChar(100) @unique
-  description String @db.Text
-  price Int
-  category ProductCategory
-
-  orders OrderProduct[]
-  @@map("products")
-}
-
-enum OrderStatus {
-  READY
-  PENDING
-  ONGOING
-  COMPLETED
-}
-
-model Order {
-  id String @id @db.VarChar(100) @default(uuid())
-  orderDate DateTime @db.Date @default(now())
-  orderTimestamp DateTime @db.Timestamp() @default(now())
-  orderNumber Int
-  status OrderStatus
-
-  orderedProductsDetails OrderProduct[]
-  orderTransaction OrderTransaction?
-
-  @@unique([orderDate, orderNumber])
-  @@map("orders")
-}
-
-model OrderProduct {
-  id String @id @db.VarChar(100) @default(uuid())
-  order_id String @db.VarChar(100)
-  product_id String @db.VarChar(100)
-  quantity Int
-
-  product Product @relation(fields: [product_id], references: [id])
-  order Order @relation(fields: [order_id], references: [id])
-
-  @@unique([order_id, product_id])
-  @@map("order_products_details")
-}
-
-enum PaymentMethod {
-  CASH
-  QRIS
-  CARD  
-}
-
-enum OrderTransactionStatus {
-  PENDING
-  CANCELED
-  SUCCESS
-}
-
-model OrderTransaction {
-  id String @id @db.VarChar(100) @default(uuid())
-  order_id String @db.VarChar(100) @unique
-  paymentMehthod PaymentMethod
-  totalCost Int 
-
-  order Order @relation(fields: [order_id], references: [id])
-
-  @@map("order_transactions")
-}
-
 datasource db {
   provider = "postgresql"
+}
+
+model Template {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(50)
 }

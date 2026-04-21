@@ -1,13 +1,144 @@
 generator client {
   provider = "prisma-client"
-  output   = "./generated/"
+  output   = "./generated"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-model Template {
-  id Int @id @default(autoincrement())
-  name String @db.VarChar(50)
+model User {
+  id          String    @id @default(uuid())
+  username    String    @unique @db.VarChar(50)
+  password    String    @db.VarChar(100)
+  name        String    @db.VarChar(50)
+  description String?   @db.Text
+  createdAt   DateTime  @default(now())
+  deletedAt   DateTime?
+  email       String    @unique @db.VarChar(255)
+
+  passwordResetToken   String?   @db.VarChar(255)
+  passwordResetExpired DateTime?
+
+  admin      Admin?
+  learner    Learner?
+  instructor Instructor?
+
+  @@map("users")
+}
+
+model Admin {
+  id      String @id @default(uuid())
+  user_id String @unique
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("admins")
+}
+
+model Learner {
+  id      String @id @default(uuid())
+  user_id String @unique
+
+  coursesTaken      LearnerCourseEnroll[]
+  payment_histories PaymentHistory[]
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("learners")
+}
+
+model Instructor {
+  id      String @id @default(uuid())
+  user_id String @unique
+
+  courses Course[]
+  user    User     @relation(fields: [user_id], references: [id])
+
+  @@map("instructors")
+}
+
+model LearnerCourseEnroll {
+  id         String @id @default(uuid())
+  learner_id String
+  course_id  String
+
+  learner                   Learner                    @relation(fields: [learner_id], references: [id])
+  course                    Course                     @relation(fields: [course_id], references: [id])
+  LearnerCourseVideoEnrolls LearnerCourseVideoEnroll[]
+
+  @@unique([learner_id, course_id])
+  @@map("learner_course_enroll")
+}
+
+model LearnerCourseVideoEnroll {
+  id          String  @id @default(uuid())
+  enroll_id   String
+  video_id    String
+  isCompleted Boolean @default(false)
+
+  enroll LearnerCourseEnroll @relation(fields: [enroll_id], references: [id])
+  video  Video               @relation(fields: [video_id], references: [id])
+
+  @@unique([enroll_id, video_id])
+  @@map("learner_course_video_enroll")
+}
+
+model Course {
+  id                 String @id @default(uuid())
+  title              String @db.VarChar(100)
+  description        String @db.Text
+  instructor_id      String
+  preview_video_link String @db.VarChar(255)
+  price              Int    @default(0)
+
+  instructors       Instructor            @relation(fields: [instructor_id], references: [id])
+  videos            Video[]
+  enrolls           LearnerCourseEnroll[]
+  payment_histories PaymentHistory[]
+
+  @@map("courses")
+}
+
+model Video {
+  id       String @id @default(uuid())
+  title    String
+  link     String @db.VarChar(255)
+  duration Int    @default(0) // Dalam detik
+  order    Int // Urutan video 
+
+  course_id String
+
+  course Course @relation(fields: [course_id], references: [id])
+
+  enrolledVideos LearnerCourseVideoEnroll[]
+
+  @@map("videos")
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  E_WALLET
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+model PaymentHistory {
+  id             String        @id @default(uuid())
+  course_id      String
+  learner_id     String
+  createdAt      DateTime      @default(now())
+  payment_method PaymentMethod
+  amount         Int
+  status         PaymentStatus @default(PENDING)
+
+  course  Course  @relation(fields: [course_id], references: [id])
+  learner Learner @relation(fields: [learner_id], references: [id])
+
+  @@map("payment_history")
 }

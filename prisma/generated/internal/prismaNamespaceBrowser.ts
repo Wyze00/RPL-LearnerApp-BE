@@ -51,7 +51,15 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Template: 'Template'
+  User: 'User',
+  Admin: 'Admin',
+  Learner: 'Learner',
+  Instructor: 'Instructor',
+  LearnerCourseEnroll: 'LearnerCourseEnroll',
+  LearnerCourseVideoEnroll: 'LearnerCourseVideoEnroll',
+  Course: 'Course',
+  Video: 'Video',
+  PaymentHistory: 'PaymentHistory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,12 +78,100 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const TemplateScalarFieldEnum = {
+export const UserScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  username: 'username',
+  password: 'password',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt',
+  email: 'email',
+  passwordResetToken: 'passwordResetToken',
+  passwordResetExpired: 'passwordResetExpired'
 } as const
 
-export type TemplateScalarFieldEnum = (typeof TemplateScalarFieldEnum)[keyof typeof TemplateScalarFieldEnum]
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const AdminScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id'
+} as const
+
+export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
+
+
+export const LearnerScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id'
+} as const
+
+export type LearnerScalarFieldEnum = (typeof LearnerScalarFieldEnum)[keyof typeof LearnerScalarFieldEnum]
+
+
+export const InstructorScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id'
+} as const
+
+export type InstructorScalarFieldEnum = (typeof InstructorScalarFieldEnum)[keyof typeof InstructorScalarFieldEnum]
+
+
+export const LearnerCourseEnrollScalarFieldEnum = {
+  id: 'id',
+  learner_id: 'learner_id',
+  course_id: 'course_id'
+} as const
+
+export type LearnerCourseEnrollScalarFieldEnum = (typeof LearnerCourseEnrollScalarFieldEnum)[keyof typeof LearnerCourseEnrollScalarFieldEnum]
+
+
+export const LearnerCourseVideoEnrollScalarFieldEnum = {
+  id: 'id',
+  enroll_id: 'enroll_id',
+  video_id: 'video_id',
+  isCompleted: 'isCompleted'
+} as const
+
+export type LearnerCourseVideoEnrollScalarFieldEnum = (typeof LearnerCourseVideoEnrollScalarFieldEnum)[keyof typeof LearnerCourseVideoEnrollScalarFieldEnum]
+
+
+export const CourseScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  instructor_id: 'instructor_id',
+  preview_video_link: 'preview_video_link',
+  price: 'price'
+} as const
+
+export type CourseScalarFieldEnum = (typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum]
+
+
+export const VideoScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  duration: 'duration',
+  order: 'order',
+  course_id: 'course_id'
+} as const
+
+export type VideoScalarFieldEnum = (typeof VideoScalarFieldEnum)[keyof typeof VideoScalarFieldEnum]
+
+
+export const PaymentHistoryScalarFieldEnum = {
+  id: 'id',
+  course_id: 'course_id',
+  learner_id: 'learner_id',
+  createdAt: 'createdAt',
+  payment_method: 'payment_method',
+  amount: 'amount',
+  status: 'status'
+} as const
+
+export type PaymentHistoryScalarFieldEnum = (typeof PaymentHistoryScalarFieldEnum)[keyof typeof PaymentHistoryScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -92,4 +188,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

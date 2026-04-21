@@ -8,5 +8,13 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Template.js'
+export type * from './models/User.js'
+export type * from './models/Admin.js'
+export type * from './models/Learner.js'
+export type * from './models/Instructor.js'
+export type * from './models/LearnerCourseEnroll.js'
+export type * from './models/LearnerCourseVideoEnroll.js'
+export type * from './models/Course.js'
+export type * from './models/Video.js'
+export type * from './models/PaymentHistory.js'
 export type * from './commonInputTypes.js'

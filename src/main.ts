@@ -7,6 +7,11 @@ import { logger } from './utils/winston.util.js';
 import { TemplateRouter } from './routers/template.router.js';
 
 import { AuthRouter, AuthRouterWithAuthentication } from './routers/auth.router.js';
+import { EnrollmentRouter } from './routers/enrollment.router.js';
+import { CourseRouter, CourseRouterWithAuth } from './routers/course.router.js';
+import { InstructorRouter } from './routers/instructor.router.js';
+import { AdminRouterWithAuth } from './routers/admin.router.js';
+
 
 export const app = express();
 
@@ -29,6 +34,11 @@ app.use(logMiddleware);
 app.use('/api/templates/', TemplateRouter.getRouter());
 app.use('/api/auth/', AuthRouter.getRouter());
 app.use('/api/auth/', AuthRouterWithAuthentication.getRouter());
+app.use('/api/enrollments/', EnrollmentRouter.getRouter());
+app.use('/api/courses/', CourseRouter.getRouter());
+app.use('/api/courses/', CourseRouterWithAuth.getRouter());
+app.use('/api/instructors/', InstructorRouter.getRouter());
+app.use('/api/admin/', AdminRouterWithAuth.getRouter());
 // Router
 
 // Error middleware

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: learnerapp-db-statefulset
+spec:
+  serviceName: "learnerapp-db-service"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: learnerapp-db
+  template:
+    metadata:
+      labels:
+        app: learnerapp-db
+    spec:
+      containers:
+      - name: learnerapp-db
+        image: postgres:15 
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: learnerapp
+        volumeMounts:
+        - name: learnerapp-db-data 
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: learnerapp-db-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ] 
+      resources:
+        requests:
+          storage: 1Gi 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: learnerapp-db-service
+spec:
+  selector:
+    app: learnerapp-db
+  ports:
+  - port: 5432
+    targetPort: 5432

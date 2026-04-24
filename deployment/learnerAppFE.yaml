@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learnerapp-fe-deployment
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: learnerapp-fe
+  template:
+    metadata:
+      name: learnerapp-fe
+      labels:
+        app: learnerapp-fe
+    spec:
+      containers:
+      - name: learnerapp-fe
+        image: wyze00/rpl-learnerapp-fe
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: learnerapp-fe-service
+spec:
+  selector:
+    app: learnerapp-fe
+  ports: 
+  - port: 80
+    targetPort: 80
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: learnerapp-ingress
+spec: 
+  ingressClassName: nginx 
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: 
+                name: learnerapp-fe-service
+                port: 
+                  number: 80

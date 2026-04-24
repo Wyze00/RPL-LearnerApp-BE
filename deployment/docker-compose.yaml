@@ -1,0 +1,34 @@
+services:
+  learnerapp-be:
+    container_name: learnerapp-be
+    image: wyze00/rpl-learnerapp-be:latest
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      JWTKEY: "SecretJWTSecretJWT"
+      SIGNEDCOOKIEKEY: "SecretSignedCookie"
+      DATABASE_URL: "postgresql://postgres:postgres@learnerapp-db:5432/learnerapp"
+      EMAIL_ACCOUNT: "eli.emard@ethereal.email"
+      EMAIL_PASSWORD: "yQvSNYkkVPBnS6urRa"
+    depends_on:
+      - learnerapp-db
+      
+  learnerapp-fe:
+    container_name: learnerapp-fe
+    image: wyze00/rpl-learnerapp-fe:latest
+    ports:
+      - "5173:80"
+    environment:
+      HOST: localhost
+      PORT: 80
+    depends_on:
+      - learnerapp-be
+      
+  learnerapp-db:
+    container_name: learnerapp-db
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: learnerapp

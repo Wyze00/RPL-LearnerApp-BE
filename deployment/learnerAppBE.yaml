@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learnerapp-be-deployment
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: learnerapp-be
+  template:
+    metadata:
+      name: learnerapp-be
+      labels:
+        app: learnerapp-be
+    spec:
+      containers:
+      - name: learnerapp-be
+        image: wyze00/rpl-learnerapp-be
+        ports:
+        - containerPort: 3000
+        env:
+          - name: PORT
+            value: "3000"
+          - name: JWTKEY
+            value: SecretJWTSecretJWT
+          - name: SIGNEDCOOKIEKEY
+            value: SecretSignedCookie
+          - name: DATABASE_URL
+            value: postgresql://postgres:postgres@learnerapp-db-service.default.svc.cluster.local:5432/learnerapp 
+          - name: EMAIL_ACCOUNT
+            value: eli.emard@ethereal.email
+          - name: EMAIL_PASSWORD
+            value: yQvSNYkkVPBnS6urRa
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: learnerapp-be-service
+spec:
+  selector:
+    app: learnerapp-be
+  ports: 
+  - port: 3000
+    targetPort: 3000

@@ -38,7 +38,7 @@ app.use('/api/enrollments/', EnrollmentRouter.getRouter());
 app.use('/api/courses/', CourseRouter.getRouter());
 app.use('/api/courses/', CourseRouterWithAuth.getRouter());
 app.use('/api/instructors/', InstructorRouter.getRouter());
-app.use('/api/admin/', AdminRouterWithAuth.getRouter());
+app.use('/api/admins/', AdminRouterWithAuth.getRouter());
 // Router
 
 // Error middleware

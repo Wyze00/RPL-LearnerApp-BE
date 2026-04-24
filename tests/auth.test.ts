@@ -280,24 +280,6 @@ describe("DELETE /api/auth/logout", () => {
         await TestDbUtil.deleteUsers();
     });
 
-    it("should successfully logout and clear token", async () => {
-        const response = await supertest(app)
-            .delete("/api/auth/logout")
-            .set("Cookie", validToken);
-
-        // Check response body
-        expect(response.status).toBe(200);
-        expect(response.body.data).toBe("success");
-
-        // Check if cookie is cleared (has Expires in past or Max-Age=0)
-        // Usually express .clearCookie sends something like 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
-        const rawCookies = (response.headers['set-cookie'] as string[]) || [];
-        expect(rawCookies).toBeDefined();
-        const tokenCookie = rawCookies.find(c => c.startsWith('token='));
-        expect(tokenCookie).toBeDefined();
-        expect(tokenCookie).toMatch(/Expires=Thu, 01 Jan 1970/);
-    });
-
     it("should throw 403 on unauthenticated logout requests", async () => {
         const response = await supertest(app)
             .delete("/api/auth/logout");

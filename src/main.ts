@@ -4,7 +4,6 @@ import { errorMiddleware } from './middlewares/error.middleware.js';
 import cookieParser from 'cookie-parser';
 import { logMiddleware } from './middlewares/log.middleware.js';
 import { logger } from './utils/winston.util.js';
-import { TemplateRouter } from './routers/template.router.js';
 
 import { AuthRouter, AuthRouterWithAuthentication } from './routers/auth.router.js';
 import { EnrollmentRouter } from './routers/enrollment.router.js';
@@ -31,7 +30,6 @@ app.use(cookieParser(signedCookieKey));
 app.use(logMiddleware);
 
 // Router
-app.use('/api/templates/', TemplateRouter.getRouter());
 app.use('/api/auth/', AuthRouter.getRouter());
 app.use('/api/auth/', AuthRouterWithAuthentication.getRouter());
 app.use('/api/enrollments/', EnrollmentRouter.getRouter());

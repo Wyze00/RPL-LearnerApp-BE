@@ -127,7 +127,7 @@ export class CourseService {
         },
       });
 
-      const manyData = [];
+      const manyData: { video_id: string; enroll_id: string; isCompleted: boolean; }[] = [];
       
       course.videos.map((video) => {
         manyData.push({

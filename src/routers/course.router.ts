@@ -146,6 +146,24 @@ export class CourseRouterWithAuth {
       },
     );
 
+    this.router.get(
+      "/:courseId/videos/:videoId",
+      async (req: RequestWithUsername, res: Response, next: NextFunction) => {
+        try {
+          const response = await CourseService.getVideo(
+            req.params.courseId as string,
+            req.params.videoId as string,
+          );
+
+          return res.status(200).json({
+            data: response,
+          });
+        } catch (e) {
+          next(e);
+        }
+      },
+    );
+
     this.router.put(
       "/:courseId/videos/:videoId",
       async (req: RequestWithUsername, res: Response, next: NextFunction) => {

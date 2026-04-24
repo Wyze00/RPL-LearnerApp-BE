@@ -19,9 +19,21 @@ export class InstructorService {
 
     const courses = await prismaClient.course.findMany({
       where: { instructor_id: user.instructor.id },
+      include: {
+        _count: {
+          select: {
+            enrolls: true,
+          }
+        },
+      }
     });
 
-    return courses.map(course => CourseService.mapCourse(course));
+    return courses.map((course) =>{
+      return {
+        ...CourseService.mapCourse(course),
+        count: course._count.enrolls,
+      }
+    });
   }
 
   static async getStats(username: string, query: GetStatsQuery) {

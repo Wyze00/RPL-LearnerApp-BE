@@ -26,6 +26,7 @@ export class EnrollmentService {
 
         return enrollments.map((enrollment) => {
             const progress = Math.round(enrollment.LearnerCourseVideoEnrolls.filter((v) => v.isCompleted).length / enrollment.LearnerCourseVideoEnrolls.length * 100);
+            console.log(enrollment.LearnerCourseVideoEnrolls);
             return {
                 ...this.mapEnrollment(enrollment),
                 course: enrollment.course,

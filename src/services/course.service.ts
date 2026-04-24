@@ -59,13 +59,16 @@ export class CourseService {
   static async getById(id: string) {
     const course = await prismaClient.course.findUnique({
       where: { id },
+      include: {
+        videos: true,
+      }
     });
 
     if (!course) {
       throw new NotFoundException("Course not found");
     }
 
-    return this.mapCourse(course);
+    return course;
   }
 
   //learner course API
@@ -248,6 +251,18 @@ export class CourseService {
     });
 
     return true;
+  }
+
+  static async getVideo(courseId: string, videoId: string) {
+    const video = await prismaClient.video.findUnique({
+      where: { id: videoId, course_id: courseId },
+    });
+
+    if (!video) {
+      throw new NotFoundException("Video not found");
+    }
+
+    return video;
   }
 
   static async createVideo(courseId: string, username: string, request: CreateVideoRequest) {

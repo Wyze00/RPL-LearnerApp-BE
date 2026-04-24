@@ -59,6 +59,21 @@ export class EnrollmentRouter {
                 next(e);
             }
         });
+
+        this.router.get('/:enrollmentId/videos/:videoId', async (req: RequestWithUsername, res: Response, next: NextFunction) => {
+            try {
+                const enrollmentId = req.params.enrollmentId as string;
+                const videoId = req.params.videoId as string;
+
+                const response = await EnrollmentService.getVideoEnrollment(enrollmentId, videoId);
+                
+                return res.status(200).json({
+                    data: response,
+                });
+            } catch (e) {
+                next(e);
+            }
+        });
     }
 
     static getRouter () {

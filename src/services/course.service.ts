@@ -91,6 +91,9 @@ export class CourseService {
 
     const course = await prismaClient.course.findUnique({
       where: { id: courseId },
+      include: {
+        videos: true,
+      }
     });
 
     if (!course) {
@@ -120,6 +123,20 @@ export class CourseService {
           course_id: course.id,
         },
       });
+
+      const manyData = [];
+      
+      course.videos.map((video) => {
+        manyData.push({
+          video_id: video.id,
+          enroll_id: enrollment.id,
+          isCompleted: false,
+        })
+      })
+
+      await prisma.learnerCourseVideoEnroll.createMany({
+        data: manyData
+      })
 
       await prisma.paymentHistory.create({
         data: {

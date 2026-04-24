@@ -17,10 +17,21 @@ export class EnrollmentService {
         }
 
         const enrollments = await prismaClient.learnerCourseEnroll.findMany({
-            where: { learner_id: user.learner.id }
+            where: { learner_id: user.learner.id },
+            include: {
+                course: true,
+                LearnerCourseVideoEnrolls: true
+            }
         });
 
-        return enrollments.map(e => this.mapEnrollment(e));
+        return enrollments.map((enrollment) => {
+            const progress = Math.round(enrollment.LearnerCourseVideoEnrolls.filter((v) => v.isCompleted).length / enrollment.LearnerCourseVideoEnrolls.length * 100);
+            return {
+                ...this.mapEnrollment(enrollment),
+                course: enrollment.course,
+                progress: progress,
+            }
+        });
     }
 
     static async getById(enrollmentId: string, username: string) {
@@ -37,6 +48,14 @@ export class EnrollmentService {
             where: { 
                 id: enrollmentId,
                 learner_id: user.learner.id 
+            },
+            include: {
+                course: true,
+                LearnerCourseVideoEnrolls: {
+                    include: {
+                        video: true,
+                    }
+                }
             }
         });
 
@@ -44,7 +63,27 @@ export class EnrollmentService {
             throw new NotFoundException('Enrollment not found');
         }
 
-        return this.mapEnrollment(enrollment);
+        const progress = Math.round(enrollment.LearnerCourseVideoEnrolls.filter((v) => v.isCompleted).length / enrollment.LearnerCourseVideoEnrolls.length * 100);
+        return {
+            ...this.mapEnrollment(enrollment),
+            course: enrollment.course,
+            progress: progress,
+            enrollmentVideos: enrollment.LearnerCourseVideoEnrolls,
+        }
+    }
+
+    static async getVideoEnrollment(enrollmentId: string, videoId: string) {
+        const videoEnrollment = await prismaClient.learnerCourseVideoEnroll.findFirst({
+            where: {
+                enroll_id: enrollmentId,
+                id: videoId
+            },
+            include: {
+                video: true,
+            }
+        });
+
+        return videoEnrollment;
     }
 
     static async updateVideoEnrollment(enrollmentId: string, videoId: string, username: string, request: PutVideoEnrollmentRequest) {
@@ -73,7 +112,7 @@ export class EnrollmentService {
         const videoEnrollment = await prismaClient.learnerCourseVideoEnroll.findFirst({
             where: {
                 enroll_id: enrollmentId,
-                video_id: videoId
+                id: videoId
             }
         });
 

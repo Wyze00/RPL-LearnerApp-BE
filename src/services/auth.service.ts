@@ -35,6 +35,9 @@ export class AuthService {
                 name: validatedData.name,
                 learner: {
                     create: {},
+                },
+                instructor: {
+                    create: {},
                 }
             }
         });

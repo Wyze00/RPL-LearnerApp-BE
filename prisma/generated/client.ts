@@ -86,3 +86,8 @@ export type Video = Prisma.VideoModel
  * 
  */
 export type PaymentHistory = Prisma.PaymentHistoryModel
+/**
+ * Model Wallet
+ * 
+ */
+export type Wallet = Prisma.WalletModel

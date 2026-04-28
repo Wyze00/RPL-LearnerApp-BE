@@ -225,6 +225,7 @@ export type UserWhereInput = {
   admin?: Prisma.XOR<Prisma.AdminNullableScalarRelationFilter, Prisma.AdminWhereInput> | null
   learner?: Prisma.XOR<Prisma.LearnerNullableScalarRelationFilter, Prisma.LearnerWhereInput> | null
   instructor?: Prisma.XOR<Prisma.InstructorNullableScalarRelationFilter, Prisma.InstructorWhereInput> | null
+  wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -241,6 +242,7 @@ export type UserOrderByWithRelationInput = {
   admin?: Prisma.AdminOrderByWithRelationInput
   learner?: Prisma.LearnerOrderByWithRelationInput
   instructor?: Prisma.InstructorOrderByWithRelationInput
+  wallet?: Prisma.WalletOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -260,6 +262,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   admin?: Prisma.XOR<Prisma.AdminNullableScalarRelationFilter, Prisma.AdminWhereInput> | null
   learner?: Prisma.XOR<Prisma.LearnerNullableScalarRelationFilter, Prisma.LearnerWhereInput> | null
   instructor?: Prisma.XOR<Prisma.InstructorNullableScalarRelationFilter, Prisma.InstructorWhereInput> | null
+  wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
 }, "id" | "username" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -308,6 +311,7 @@ export type UserCreateInput = {
   admin?: Prisma.AdminCreateNestedOneWithoutUserInput
   learner?: Prisma.LearnerCreateNestedOneWithoutUserInput
   instructor?: Prisma.InstructorCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -324,6 +328,7 @@ export type UserUncheckedCreateInput = {
   admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
   learner?: Prisma.LearnerUncheckedCreateNestedOneWithoutUserInput
   instructor?: Prisma.InstructorUncheckedCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -340,6 +345,7 @@ export type UserUpdateInput = {
   admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
   learner?: Prisma.LearnerUpdateOneWithoutUserNestedInput
   instructor?: Prisma.InstructorUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -356,6 +362,7 @@ export type UserUncheckedUpdateInput = {
   admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
   learner?: Prisma.LearnerUncheckedUpdateOneWithoutUserNestedInput
   instructor?: Prisma.InstructorUncheckedUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -499,6 +506,20 @@ export type UserUpdateOneRequiredWithoutInstructorNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInstructorInput, Prisma.UserUpdateWithoutInstructorInput>, Prisma.UserUncheckedUpdateWithoutInstructorInput>
 }
 
+export type UserCreateNestedOneWithoutWalletInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWalletInput
+  upsert?: Prisma.UserUpsertWithoutWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWalletInput, Prisma.UserUpdateWithoutWalletInput>, Prisma.UserUncheckedUpdateWithoutWalletInput>
+}
+
 export type UserCreateWithoutAdminInput = {
   id?: string
   username: string
@@ -512,6 +533,7 @@ export type UserCreateWithoutAdminInput = {
   passwordResetExpired?: Date | string | null
   learner?: Prisma.LearnerCreateNestedOneWithoutUserInput
   instructor?: Prisma.InstructorCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAdminInput = {
@@ -527,6 +549,7 @@ export type UserUncheckedCreateWithoutAdminInput = {
   passwordResetExpired?: Date | string | null
   learner?: Prisma.LearnerUncheckedCreateNestedOneWithoutUserInput
   instructor?: Prisma.InstructorUncheckedCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAdminInput = {
@@ -558,6 +581,7 @@ export type UserUpdateWithoutAdminInput = {
   passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learner?: Prisma.LearnerUpdateOneWithoutUserNestedInput
   instructor?: Prisma.InstructorUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAdminInput = {
@@ -573,6 +597,7 @@ export type UserUncheckedUpdateWithoutAdminInput = {
   passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learner?: Prisma.LearnerUncheckedUpdateOneWithoutUserNestedInput
   instructor?: Prisma.InstructorUncheckedUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLearnerInput = {
@@ -588,6 +613,7 @@ export type UserCreateWithoutLearnerInput = {
   passwordResetExpired?: Date | string | null
   admin?: Prisma.AdminCreateNestedOneWithoutUserInput
   instructor?: Prisma.InstructorCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLearnerInput = {
@@ -603,6 +629,7 @@ export type UserUncheckedCreateWithoutLearnerInput = {
   passwordResetExpired?: Date | string | null
   admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
   instructor?: Prisma.InstructorUncheckedCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLearnerInput = {
@@ -634,6 +661,7 @@ export type UserUpdateWithoutLearnerInput = {
   passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
   instructor?: Prisma.InstructorUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLearnerInput = {
@@ -649,6 +677,7 @@ export type UserUncheckedUpdateWithoutLearnerInput = {
   passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
   instructor?: Prisma.InstructorUncheckedUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInstructorInput = {
@@ -664,6 +693,7 @@ export type UserCreateWithoutInstructorInput = {
   passwordResetExpired?: Date | string | null
   admin?: Prisma.AdminCreateNestedOneWithoutUserInput
   learner?: Prisma.LearnerCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInstructorInput = {
@@ -679,6 +709,7 @@ export type UserUncheckedCreateWithoutInstructorInput = {
   passwordResetExpired?: Date | string | null
   admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
   learner?: Prisma.LearnerUncheckedCreateNestedOneWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInstructorInput = {
@@ -710,6 +741,7 @@ export type UserUpdateWithoutInstructorInput = {
   passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
   learner?: Prisma.LearnerUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInstructorInput = {
@@ -725,6 +757,87 @@ export type UserUncheckedUpdateWithoutInstructorInput = {
   passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
   learner?: Prisma.LearnerUncheckedUpdateOneWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutWalletInput = {
+  id?: string
+  username: string
+  password: string
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  deletedAt?: Date | string | null
+  email: string
+  passwordResetToken?: string | null
+  passwordResetExpired?: Date | string | null
+  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
+  learner?: Prisma.LearnerCreateNestedOneWithoutUserInput
+  instructor?: Prisma.InstructorCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutWalletInput = {
+  id?: string
+  username: string
+  password: string
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  deletedAt?: Date | string | null
+  email: string
+  passwordResetToken?: string | null
+  passwordResetExpired?: Date | string | null
+  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
+  learner?: Prisma.LearnerUncheckedCreateNestedOneWithoutUserInput
+  instructor?: Prisma.InstructorUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutWalletInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+}
+
+export type UserUpsertWithoutWalletInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutWalletInput, Prisma.UserUncheckedUpdateWithoutWalletInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutWalletInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutWalletInput, Prisma.UserUncheckedUpdateWithoutWalletInput>
+}
+
+export type UserUpdateWithoutWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
+  learner?: Prisma.LearnerUpdateOneWithoutUserNestedInput
+  instructor?: Prisma.InstructorUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpired?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
+  learner?: Prisma.LearnerUncheckedUpdateOneWithoutUserNestedInput
+  instructor?: Prisma.InstructorUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -743,6 +856,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   admin?: boolean | Prisma.User$adminArgs<ExtArgs>
   learner?: boolean | Prisma.User$learnerArgs<ExtArgs>
   instructor?: boolean | Prisma.User$instructorArgs<ExtArgs>
+  wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -789,6 +903,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   admin?: boolean | Prisma.User$adminArgs<ExtArgs>
   learner?: boolean | Prisma.User$learnerArgs<ExtArgs>
   instructor?: boolean | Prisma.User$instructorArgs<ExtArgs>
+  wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -799,6 +914,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     admin: Prisma.$AdminPayload<ExtArgs> | null
     learner: Prisma.$LearnerPayload<ExtArgs> | null
     instructor: Prisma.$InstructorPayload<ExtArgs> | null
+    wallet: Prisma.$WalletPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1208,6 +1324,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   admin<T extends Prisma.User$adminArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$adminArgs<ExtArgs>>): Prisma.Prisma__AdminClient<runtime.Types.Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   learner<T extends Prisma.User$learnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$learnerArgs<ExtArgs>>): Prisma.Prisma__LearnerClient<runtime.Types.Result.GetResult<Prisma.$LearnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   instructor<T extends Prisma.User$instructorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$instructorArgs<ExtArgs>>): Prisma.Prisma__InstructorClient<runtime.Types.Result.GetResult<Prisma.$InstructorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  wallet<T extends Prisma.User$walletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$walletArgs<ExtArgs>>): Prisma.Prisma__WalletClient<runtime.Types.Result.GetResult<Prisma.$WalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1694,6 +1811,25 @@ export type User$instructorArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   include?: Prisma.InstructorInclude<ExtArgs> | null
   where?: Prisma.InstructorWhereInput
+}
+
+/**
+ * User.wallet
+ */
+export type User$walletArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Wallet
+   */
+  select?: Prisma.WalletSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Wallet
+   */
+  omit?: Prisma.WalletOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WalletInclude<ExtArgs> | null
+  where?: Prisma.WalletWhereInput
 }
 
 /**

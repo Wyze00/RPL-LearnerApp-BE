@@ -227,7 +227,6 @@ export type CourseWhereInput = {
   instructors?: Prisma.XOR<Prisma.InstructorScalarRelationFilter, Prisma.InstructorWhereInput>
   videos?: Prisma.VideoListRelationFilter
   enrolls?: Prisma.LearnerCourseEnrollListRelationFilter
-  payment_histories?: Prisma.PaymentHistoryListRelationFilter
 }
 
 export type CourseOrderByWithRelationInput = {
@@ -240,7 +239,6 @@ export type CourseOrderByWithRelationInput = {
   instructors?: Prisma.InstructorOrderByWithRelationInput
   videos?: Prisma.VideoOrderByRelationAggregateInput
   enrolls?: Prisma.LearnerCourseEnrollOrderByRelationAggregateInput
-  payment_histories?: Prisma.PaymentHistoryOrderByRelationAggregateInput
 }
 
 export type CourseWhereUniqueInput = Prisma.AtLeast<{
@@ -256,7 +254,6 @@ export type CourseWhereUniqueInput = Prisma.AtLeast<{
   instructors?: Prisma.XOR<Prisma.InstructorScalarRelationFilter, Prisma.InstructorWhereInput>
   videos?: Prisma.VideoListRelationFilter
   enrolls?: Prisma.LearnerCourseEnrollListRelationFilter
-  payment_histories?: Prisma.PaymentHistoryListRelationFilter
 }, "id">
 
 export type CourseOrderByWithAggregationInput = {
@@ -294,7 +291,6 @@ export type CourseCreateInput = {
   instructors: Prisma.InstructorCreateNestedOneWithoutCoursesInput
   videos?: Prisma.VideoCreateNestedManyWithoutCourseInput
   enrolls?: Prisma.LearnerCourseEnrollCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateInput = {
@@ -306,7 +302,6 @@ export type CourseUncheckedCreateInput = {
   price?: number
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCourseInput
   enrolls?: Prisma.LearnerCourseEnrollUncheckedCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUpdateInput = {
@@ -318,7 +313,6 @@ export type CourseUpdateInput = {
   instructors?: Prisma.InstructorUpdateOneRequiredWithoutCoursesNestedInput
   videos?: Prisma.VideoUpdateManyWithoutCourseNestedInput
   enrolls?: Prisma.LearnerCourseEnrollUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateInput = {
@@ -330,7 +324,6 @@ export type CourseUncheckedUpdateInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   videos?: Prisma.VideoUncheckedUpdateManyWithoutCourseNestedInput
   enrolls?: Prisma.LearnerCourseEnrollUncheckedUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseCreateManyInput = {
@@ -487,20 +480,6 @@ export type CourseUpdateOneRequiredWithoutVideosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CourseUpdateToOneWithWhereWithoutVideosInput, Prisma.CourseUpdateWithoutVideosInput>, Prisma.CourseUncheckedUpdateWithoutVideosInput>
 }
 
-export type CourseCreateNestedOneWithoutPayment_historiesInput = {
-  create?: Prisma.XOR<Prisma.CourseCreateWithoutPayment_historiesInput, Prisma.CourseUncheckedCreateWithoutPayment_historiesInput>
-  connectOrCreate?: Prisma.CourseCreateOrConnectWithoutPayment_historiesInput
-  connect?: Prisma.CourseWhereUniqueInput
-}
-
-export type CourseUpdateOneRequiredWithoutPayment_historiesNestedInput = {
-  create?: Prisma.XOR<Prisma.CourseCreateWithoutPayment_historiesInput, Prisma.CourseUncheckedCreateWithoutPayment_historiesInput>
-  connectOrCreate?: Prisma.CourseCreateOrConnectWithoutPayment_historiesInput
-  upsert?: Prisma.CourseUpsertWithoutPayment_historiesInput
-  connect?: Prisma.CourseWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CourseUpdateToOneWithWhereWithoutPayment_historiesInput, Prisma.CourseUpdateWithoutPayment_historiesInput>, Prisma.CourseUncheckedUpdateWithoutPayment_historiesInput>
-}
-
 export type CourseCreateWithoutInstructorsInput = {
   id?: string
   title: string
@@ -509,7 +488,6 @@ export type CourseCreateWithoutInstructorsInput = {
   price?: number
   videos?: Prisma.VideoCreateNestedManyWithoutCourseInput
   enrolls?: Prisma.LearnerCourseEnrollCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutInstructorsInput = {
@@ -520,7 +498,6 @@ export type CourseUncheckedCreateWithoutInstructorsInput = {
   price?: number
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCourseInput
   enrolls?: Prisma.LearnerCourseEnrollUncheckedCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutInstructorsInput = {
@@ -569,7 +546,6 @@ export type CourseCreateWithoutEnrollsInput = {
   price?: number
   instructors: Prisma.InstructorCreateNestedOneWithoutCoursesInput
   videos?: Prisma.VideoCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutEnrollsInput = {
@@ -580,7 +556,6 @@ export type CourseUncheckedCreateWithoutEnrollsInput = {
   preview_video_link: string
   price?: number
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutEnrollsInput = {
@@ -607,7 +582,6 @@ export type CourseUpdateWithoutEnrollsInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   instructors?: Prisma.InstructorUpdateOneRequiredWithoutCoursesNestedInput
   videos?: Prisma.VideoUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutEnrollsInput = {
@@ -618,7 +592,6 @@ export type CourseUncheckedUpdateWithoutEnrollsInput = {
   preview_video_link?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.IntFieldUpdateOperationsInput | number
   videos?: Prisma.VideoUncheckedUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseCreateWithoutVideosInput = {
@@ -629,7 +602,6 @@ export type CourseCreateWithoutVideosInput = {
   price?: number
   instructors: Prisma.InstructorCreateNestedOneWithoutCoursesInput
   enrolls?: Prisma.LearnerCourseEnrollCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutVideosInput = {
@@ -640,7 +612,6 @@ export type CourseUncheckedCreateWithoutVideosInput = {
   preview_video_link: string
   price?: number
   enrolls?: Prisma.LearnerCourseEnrollUncheckedCreateNestedManyWithoutCourseInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutVideosInput = {
@@ -667,7 +638,6 @@ export type CourseUpdateWithoutVideosInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   instructors?: Prisma.InstructorUpdateOneRequiredWithoutCoursesNestedInput
   enrolls?: Prisma.LearnerCourseEnrollUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutVideosInput = {
@@ -677,67 +647,6 @@ export type CourseUncheckedUpdateWithoutVideosInput = {
   instructor_id?: Prisma.StringFieldUpdateOperationsInput | string
   preview_video_link?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.IntFieldUpdateOperationsInput | number
-  enrolls?: Prisma.LearnerCourseEnrollUncheckedUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedUpdateManyWithoutCourseNestedInput
-}
-
-export type CourseCreateWithoutPayment_historiesInput = {
-  id?: string
-  title: string
-  description: string
-  preview_video_link: string
-  price?: number
-  instructors: Prisma.InstructorCreateNestedOneWithoutCoursesInput
-  videos?: Prisma.VideoCreateNestedManyWithoutCourseInput
-  enrolls?: Prisma.LearnerCourseEnrollCreateNestedManyWithoutCourseInput
-}
-
-export type CourseUncheckedCreateWithoutPayment_historiesInput = {
-  id?: string
-  title: string
-  description: string
-  instructor_id: string
-  preview_video_link: string
-  price?: number
-  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCourseInput
-  enrolls?: Prisma.LearnerCourseEnrollUncheckedCreateNestedManyWithoutCourseInput
-}
-
-export type CourseCreateOrConnectWithoutPayment_historiesInput = {
-  where: Prisma.CourseWhereUniqueInput
-  create: Prisma.XOR<Prisma.CourseCreateWithoutPayment_historiesInput, Prisma.CourseUncheckedCreateWithoutPayment_historiesInput>
-}
-
-export type CourseUpsertWithoutPayment_historiesInput = {
-  update: Prisma.XOR<Prisma.CourseUpdateWithoutPayment_historiesInput, Prisma.CourseUncheckedUpdateWithoutPayment_historiesInput>
-  create: Prisma.XOR<Prisma.CourseCreateWithoutPayment_historiesInput, Prisma.CourseUncheckedCreateWithoutPayment_historiesInput>
-  where?: Prisma.CourseWhereInput
-}
-
-export type CourseUpdateToOneWithWhereWithoutPayment_historiesInput = {
-  where?: Prisma.CourseWhereInput
-  data: Prisma.XOR<Prisma.CourseUpdateWithoutPayment_historiesInput, Prisma.CourseUncheckedUpdateWithoutPayment_historiesInput>
-}
-
-export type CourseUpdateWithoutPayment_historiesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  preview_video_link?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  instructors?: Prisma.InstructorUpdateOneRequiredWithoutCoursesNestedInput
-  videos?: Prisma.VideoUpdateManyWithoutCourseNestedInput
-  enrolls?: Prisma.LearnerCourseEnrollUpdateManyWithoutCourseNestedInput
-}
-
-export type CourseUncheckedUpdateWithoutPayment_historiesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  instructor_id?: Prisma.StringFieldUpdateOperationsInput | string
-  preview_video_link?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  videos?: Prisma.VideoUncheckedUpdateManyWithoutCourseNestedInput
   enrolls?: Prisma.LearnerCourseEnrollUncheckedUpdateManyWithoutCourseNestedInput
 }
 
@@ -757,7 +666,6 @@ export type CourseUpdateWithoutInstructorsInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   videos?: Prisma.VideoUpdateManyWithoutCourseNestedInput
   enrolls?: Prisma.LearnerCourseEnrollUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutInstructorsInput = {
@@ -768,7 +676,6 @@ export type CourseUncheckedUpdateWithoutInstructorsInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   videos?: Prisma.VideoUncheckedUpdateManyWithoutCourseNestedInput
   enrolls?: Prisma.LearnerCourseEnrollUncheckedUpdateManyWithoutCourseNestedInput
-  payment_histories?: Prisma.PaymentHistoryUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateManyWithoutInstructorsInput = {
@@ -787,13 +694,11 @@ export type CourseUncheckedUpdateManyWithoutInstructorsInput = {
 export type CourseCountOutputType = {
   videos: number
   enrolls: number
-  payment_histories: number
 }
 
 export type CourseCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   videos?: boolean | CourseCountOutputTypeCountVideosArgs
   enrolls?: boolean | CourseCountOutputTypeCountEnrollsArgs
-  payment_histories?: boolean | CourseCountOutputTypeCountPayment_historiesArgs
 }
 
 /**
@@ -820,13 +725,6 @@ export type CourseCountOutputTypeCountEnrollsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.LearnerCourseEnrollWhereInput
 }
 
-/**
- * CourseCountOutputType without action
- */
-export type CourseCountOutputTypeCountPayment_historiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PaymentHistoryWhereInput
-}
-
 
 export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -838,7 +736,6 @@ export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   instructors?: boolean | Prisma.InstructorDefaultArgs<ExtArgs>
   videos?: boolean | Prisma.Course$videosArgs<ExtArgs>
   enrolls?: boolean | Prisma.Course$enrollsArgs<ExtArgs>
-  payment_histories?: boolean | Prisma.Course$payment_historiesArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["course"]>
 
@@ -876,7 +773,6 @@ export type CourseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   instructors?: boolean | Prisma.InstructorDefaultArgs<ExtArgs>
   videos?: boolean | Prisma.Course$videosArgs<ExtArgs>
   enrolls?: boolean | Prisma.Course$enrollsArgs<ExtArgs>
-  payment_histories?: boolean | Prisma.Course$payment_historiesArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CourseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -892,7 +788,6 @@ export type $CoursePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     instructors: Prisma.$InstructorPayload<ExtArgs>
     videos: Prisma.$VideoPayload<ExtArgs>[]
     enrolls: Prisma.$LearnerCourseEnrollPayload<ExtArgs>[]
-    payment_histories: Prisma.$PaymentHistoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1298,7 +1193,6 @@ export interface Prisma__CourseClient<T, Null = never, ExtArgs extends runtime.T
   instructors<T extends Prisma.InstructorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InstructorDefaultArgs<ExtArgs>>): Prisma.Prisma__InstructorClient<runtime.Types.Result.GetResult<Prisma.$InstructorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   videos<T extends Prisma.Course$videosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$videosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   enrolls<T extends Prisma.Course$enrollsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$enrollsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LearnerCourseEnrollPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  payment_histories<T extends Prisma.Course$payment_historiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$payment_historiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1780,30 +1674,6 @@ export type Course$enrollsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.LearnerCourseEnrollScalarFieldEnum | Prisma.LearnerCourseEnrollScalarFieldEnum[]
-}
-
-/**
- * Course.payment_histories
- */
-export type Course$payment_historiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PaymentHistory
-   */
-  select?: Prisma.PaymentHistorySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PaymentHistory
-   */
-  omit?: Prisma.PaymentHistoryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PaymentHistoryInclude<ExtArgs> | null
-  where?: Prisma.PaymentHistoryWhereInput
-  orderBy?: Prisma.PaymentHistoryOrderByWithRelationInput | Prisma.PaymentHistoryOrderByWithRelationInput[]
-  cursor?: Prisma.PaymentHistoryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PaymentHistoryScalarFieldEnum | Prisma.PaymentHistoryScalarFieldEnum[]
 }
 
 /**

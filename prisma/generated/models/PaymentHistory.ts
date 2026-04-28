@@ -36,32 +36,32 @@ export type PaymentHistorySumAggregateOutputType = {
 
 export type PaymentHistoryMinAggregateOutputType = {
   id: string | null
-  course_id: string | null
-  learner_id: string | null
   createdAt: Date | null
+  payment_mode: $Enums.PaymentMode | null
   payment_method: $Enums.PaymentMethod | null
   amount: number | null
   status: $Enums.PaymentStatus | null
+  wallet_id: string | null
 }
 
 export type PaymentHistoryMaxAggregateOutputType = {
   id: string | null
-  course_id: string | null
-  learner_id: string | null
   createdAt: Date | null
+  payment_mode: $Enums.PaymentMode | null
   payment_method: $Enums.PaymentMethod | null
   amount: number | null
   status: $Enums.PaymentStatus | null
+  wallet_id: string | null
 }
 
 export type PaymentHistoryCountAggregateOutputType = {
   id: number
-  course_id: number
-  learner_id: number
   createdAt: number
+  payment_mode: number
   payment_method: number
   amount: number
   status: number
+  wallet_id: number
   _all: number
 }
 
@@ -76,32 +76,32 @@ export type PaymentHistorySumAggregateInputType = {
 
 export type PaymentHistoryMinAggregateInputType = {
   id?: true
-  course_id?: true
-  learner_id?: true
   createdAt?: true
+  payment_mode?: true
   payment_method?: true
   amount?: true
   status?: true
+  wallet_id?: true
 }
 
 export type PaymentHistoryMaxAggregateInputType = {
   id?: true
-  course_id?: true
-  learner_id?: true
   createdAt?: true
+  payment_mode?: true
   payment_method?: true
   amount?: true
   status?: true
+  wallet_id?: true
 }
 
 export type PaymentHistoryCountAggregateInputType = {
   id?: true
-  course_id?: true
-  learner_id?: true
   createdAt?: true
+  payment_mode?: true
   payment_method?: true
   amount?: true
   status?: true
+  wallet_id?: true
   _all?: true
 }
 
@@ -193,12 +193,12 @@ export type PaymentHistoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 
 export type PaymentHistoryGroupByOutputType = {
   id: string
-  course_id: string
-  learner_id: string
   createdAt: Date
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status: $Enums.PaymentStatus
+  wallet_id: string
   _count: PaymentHistoryCountAggregateOutputType | null
   _avg: PaymentHistoryAvgAggregateOutputType | null
   _sum: PaymentHistorySumAggregateOutputType | null
@@ -226,26 +226,24 @@ export type PaymentHistoryWhereInput = {
   OR?: Prisma.PaymentHistoryWhereInput[]
   NOT?: Prisma.PaymentHistoryWhereInput | Prisma.PaymentHistoryWhereInput[]
   id?: Prisma.StringFilter<"PaymentHistory"> | string
-  course_id?: Prisma.StringFilter<"PaymentHistory"> | string
-  learner_id?: Prisma.StringFilter<"PaymentHistory"> | string
   createdAt?: Prisma.DateTimeFilter<"PaymentHistory"> | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFilter<"PaymentHistory"> | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFilter<"PaymentHistory"> | $Enums.PaymentMethod
   amount?: Prisma.IntFilter<"PaymentHistory"> | number
   status?: Prisma.EnumPaymentStatusFilter<"PaymentHistory"> | $Enums.PaymentStatus
-  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
-  learner?: Prisma.XOR<Prisma.LearnerScalarRelationFilter, Prisma.LearnerWhereInput>
+  wallet_id?: Prisma.StringFilter<"PaymentHistory"> | string
+  wallet?: Prisma.XOR<Prisma.WalletScalarRelationFilter, Prisma.WalletWhereInput>
 }
 
 export type PaymentHistoryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  course_id?: Prisma.SortOrder
-  learner_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  payment_mode?: Prisma.SortOrder
   payment_method?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  course?: Prisma.CourseOrderByWithRelationInput
-  learner?: Prisma.LearnerOrderByWithRelationInput
+  wallet_id?: Prisma.SortOrder
+  wallet?: Prisma.WalletOrderByWithRelationInput
 }
 
 export type PaymentHistoryWhereUniqueInput = Prisma.AtLeast<{
@@ -253,24 +251,23 @@ export type PaymentHistoryWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PaymentHistoryWhereInput | Prisma.PaymentHistoryWhereInput[]
   OR?: Prisma.PaymentHistoryWhereInput[]
   NOT?: Prisma.PaymentHistoryWhereInput | Prisma.PaymentHistoryWhereInput[]
-  course_id?: Prisma.StringFilter<"PaymentHistory"> | string
-  learner_id?: Prisma.StringFilter<"PaymentHistory"> | string
   createdAt?: Prisma.DateTimeFilter<"PaymentHistory"> | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFilter<"PaymentHistory"> | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFilter<"PaymentHistory"> | $Enums.PaymentMethod
   amount?: Prisma.IntFilter<"PaymentHistory"> | number
   status?: Prisma.EnumPaymentStatusFilter<"PaymentHistory"> | $Enums.PaymentStatus
-  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
-  learner?: Prisma.XOR<Prisma.LearnerScalarRelationFilter, Prisma.LearnerWhereInput>
+  wallet_id?: Prisma.StringFilter<"PaymentHistory"> | string
+  wallet?: Prisma.XOR<Prisma.WalletScalarRelationFilter, Prisma.WalletWhereInput>
 }, "id">
 
 export type PaymentHistoryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  course_id?: Prisma.SortOrder
-  learner_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  payment_mode?: Prisma.SortOrder
   payment_method?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  wallet_id?: Prisma.SortOrder
   _count?: Prisma.PaymentHistoryCountOrderByAggregateInput
   _avg?: Prisma.PaymentHistoryAvgOrderByAggregateInput
   _max?: Prisma.PaymentHistoryMaxOrderByAggregateInput
@@ -283,67 +280,68 @@ export type PaymentHistoryScalarWhereWithAggregatesInput = {
   OR?: Prisma.PaymentHistoryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PaymentHistoryScalarWhereWithAggregatesInput | Prisma.PaymentHistoryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PaymentHistory"> | string
-  course_id?: Prisma.StringWithAggregatesFilter<"PaymentHistory"> | string
-  learner_id?: Prisma.StringWithAggregatesFilter<"PaymentHistory"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PaymentHistory"> | Date | string
+  payment_mode?: Prisma.EnumPaymentModeWithAggregatesFilter<"PaymentHistory"> | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodWithAggregatesFilter<"PaymentHistory"> | $Enums.PaymentMethod
   amount?: Prisma.IntWithAggregatesFilter<"PaymentHistory"> | number
   status?: Prisma.EnumPaymentStatusWithAggregatesFilter<"PaymentHistory"> | $Enums.PaymentStatus
+  wallet_id?: Prisma.StringWithAggregatesFilter<"PaymentHistory"> | string
 }
 
 export type PaymentHistoryCreateInput = {
   id?: string
   createdAt?: Date | string
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status?: $Enums.PaymentStatus
-  course: Prisma.CourseCreateNestedOneWithoutPayment_historiesInput
-  learner: Prisma.LearnerCreateNestedOneWithoutPayment_historiesInput
+  wallet: Prisma.WalletCreateNestedOneWithoutPaymentHistoriesInput
 }
 
 export type PaymentHistoryUncheckedCreateInput = {
   id?: string
-  course_id: string
-  learner_id: string
   createdAt?: Date | string
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status?: $Enums.PaymentStatus
+  wallet_id: string
 }
 
 export type PaymentHistoryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-  course?: Prisma.CourseUpdateOneRequiredWithoutPayment_historiesNestedInput
-  learner?: Prisma.LearnerUpdateOneRequiredWithoutPayment_historiesNestedInput
+  wallet?: Prisma.WalletUpdateOneRequiredWithoutPaymentHistoriesNestedInput
 }
 
 export type PaymentHistoryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  course_id?: Prisma.StringFieldUpdateOperationsInput | string
-  learner_id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  wallet_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PaymentHistoryCreateManyInput = {
   id?: string
-  course_id: string
-  learner_id: string
   createdAt?: Date | string
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status?: $Enums.PaymentStatus
+  wallet_id: string
 }
 
 export type PaymentHistoryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
@@ -351,12 +349,50 @@ export type PaymentHistoryUpdateManyMutationInput = {
 
 export type PaymentHistoryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  course_id?: Prisma.StringFieldUpdateOperationsInput | string
-  learner_id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  wallet_id?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PaymentHistoryCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  payment_mode?: Prisma.SortOrder
+  payment_method?: Prisma.SortOrder
+  amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  wallet_id?: Prisma.SortOrder
+}
+
+export type PaymentHistoryAvgOrderByAggregateInput = {
+  amount?: Prisma.SortOrder
+}
+
+export type PaymentHistoryMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  payment_mode?: Prisma.SortOrder
+  payment_method?: Prisma.SortOrder
+  amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  wallet_id?: Prisma.SortOrder
+}
+
+export type PaymentHistoryMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  payment_mode?: Prisma.SortOrder
+  payment_method?: Prisma.SortOrder
+  amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  wallet_id?: Prisma.SortOrder
+}
+
+export type PaymentHistorySumOrderByAggregateInput = {
+  amount?: Prisma.SortOrder
 }
 
 export type PaymentHistoryListRelationFilter = {
@@ -369,126 +405,8 @@ export type PaymentHistoryOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type PaymentHistoryCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  course_id?: Prisma.SortOrder
-  learner_id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  payment_method?: Prisma.SortOrder
-  amount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-}
-
-export type PaymentHistoryAvgOrderByAggregateInput = {
-  amount?: Prisma.SortOrder
-}
-
-export type PaymentHistoryMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  course_id?: Prisma.SortOrder
-  learner_id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  payment_method?: Prisma.SortOrder
-  amount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-}
-
-export type PaymentHistoryMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  course_id?: Prisma.SortOrder
-  learner_id?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  payment_method?: Prisma.SortOrder
-  amount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-}
-
-export type PaymentHistorySumOrderByAggregateInput = {
-  amount?: Prisma.SortOrder
-}
-
-export type PaymentHistoryCreateNestedManyWithoutLearnerInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput> | Prisma.PaymentHistoryCreateWithoutLearnerInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput | Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyLearnerInputEnvelope
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-}
-
-export type PaymentHistoryUncheckedCreateNestedManyWithoutLearnerInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput> | Prisma.PaymentHistoryCreateWithoutLearnerInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput | Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyLearnerInputEnvelope
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-}
-
-export type PaymentHistoryUpdateManyWithoutLearnerNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput> | Prisma.PaymentHistoryCreateWithoutLearnerInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput | Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput[]
-  upsert?: Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutLearnerInput | Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutLearnerInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyLearnerInputEnvelope
-  set?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  disconnect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  delete?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  update?: Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutLearnerInput | Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutLearnerInput[]
-  updateMany?: Prisma.PaymentHistoryUpdateManyWithWhereWithoutLearnerInput | Prisma.PaymentHistoryUpdateManyWithWhereWithoutLearnerInput[]
-  deleteMany?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
-}
-
-export type PaymentHistoryUncheckedUpdateManyWithoutLearnerNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput> | Prisma.PaymentHistoryCreateWithoutLearnerInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput | Prisma.PaymentHistoryCreateOrConnectWithoutLearnerInput[]
-  upsert?: Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutLearnerInput | Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutLearnerInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyLearnerInputEnvelope
-  set?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  disconnect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  delete?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  update?: Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutLearnerInput | Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutLearnerInput[]
-  updateMany?: Prisma.PaymentHistoryUpdateManyWithWhereWithoutLearnerInput | Prisma.PaymentHistoryUpdateManyWithWhereWithoutLearnerInput[]
-  deleteMany?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
-}
-
-export type PaymentHistoryCreateNestedManyWithoutCourseInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutCourseInput, Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput> | Prisma.PaymentHistoryCreateWithoutCourseInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput | Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyCourseInputEnvelope
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-}
-
-export type PaymentHistoryUncheckedCreateNestedManyWithoutCourseInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutCourseInput, Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput> | Prisma.PaymentHistoryCreateWithoutCourseInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput | Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyCourseInputEnvelope
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-}
-
-export type PaymentHistoryUpdateManyWithoutCourseNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutCourseInput, Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput> | Prisma.PaymentHistoryCreateWithoutCourseInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput | Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput[]
-  upsert?: Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutCourseInput | Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutCourseInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyCourseInputEnvelope
-  set?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  disconnect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  delete?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  update?: Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutCourseInput | Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutCourseInput[]
-  updateMany?: Prisma.PaymentHistoryUpdateManyWithWhereWithoutCourseInput | Prisma.PaymentHistoryUpdateManyWithWhereWithoutCourseInput[]
-  deleteMany?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
-}
-
-export type PaymentHistoryUncheckedUpdateManyWithoutCourseNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutCourseInput, Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput> | Prisma.PaymentHistoryCreateWithoutCourseInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput[]
-  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput | Prisma.PaymentHistoryCreateOrConnectWithoutCourseInput[]
-  upsert?: Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutCourseInput | Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutCourseInput[]
-  createMany?: Prisma.PaymentHistoryCreateManyCourseInputEnvelope
-  set?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  disconnect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  delete?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
-  update?: Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutCourseInput | Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutCourseInput[]
-  updateMany?: Prisma.PaymentHistoryUpdateManyWithWhereWithoutCourseInput | Prisma.PaymentHistoryUpdateManyWithWhereWithoutCourseInput[]
-  deleteMany?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
+export type EnumPaymentModeFieldUpdateOperationsInput = {
+  set?: $Enums.PaymentMode
 }
 
 export type EnumPaymentMethodFieldUpdateOperationsInput = {
@@ -499,48 +417,90 @@ export type EnumPaymentStatusFieldUpdateOperationsInput = {
   set?: $Enums.PaymentStatus
 }
 
-export type PaymentHistoryCreateWithoutLearnerInput = {
+export type PaymentHistoryCreateNestedManyWithoutWalletInput = {
+  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutWalletInput, Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput> | Prisma.PaymentHistoryCreateWithoutWalletInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput[]
+  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput | Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput[]
+  createMany?: Prisma.PaymentHistoryCreateManyWalletInputEnvelope
+  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+}
+
+export type PaymentHistoryUncheckedCreateNestedManyWithoutWalletInput = {
+  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutWalletInput, Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput> | Prisma.PaymentHistoryCreateWithoutWalletInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput[]
+  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput | Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput[]
+  createMany?: Prisma.PaymentHistoryCreateManyWalletInputEnvelope
+  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+}
+
+export type PaymentHistoryUpdateManyWithoutWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutWalletInput, Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput> | Prisma.PaymentHistoryCreateWithoutWalletInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput[]
+  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput | Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput[]
+  upsert?: Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutWalletInput | Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutWalletInput[]
+  createMany?: Prisma.PaymentHistoryCreateManyWalletInputEnvelope
+  set?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  disconnect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  delete?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  update?: Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutWalletInput | Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutWalletInput[]
+  updateMany?: Prisma.PaymentHistoryUpdateManyWithWhereWithoutWalletInput | Prisma.PaymentHistoryUpdateManyWithWhereWithoutWalletInput[]
+  deleteMany?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
+}
+
+export type PaymentHistoryUncheckedUpdateManyWithoutWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutWalletInput, Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput> | Prisma.PaymentHistoryCreateWithoutWalletInput[] | Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput[]
+  connectOrCreate?: Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput | Prisma.PaymentHistoryCreateOrConnectWithoutWalletInput[]
+  upsert?: Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutWalletInput | Prisma.PaymentHistoryUpsertWithWhereUniqueWithoutWalletInput[]
+  createMany?: Prisma.PaymentHistoryCreateManyWalletInputEnvelope
+  set?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  disconnect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  delete?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  connect?: Prisma.PaymentHistoryWhereUniqueInput | Prisma.PaymentHistoryWhereUniqueInput[]
+  update?: Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutWalletInput | Prisma.PaymentHistoryUpdateWithWhereUniqueWithoutWalletInput[]
+  updateMany?: Prisma.PaymentHistoryUpdateManyWithWhereWithoutWalletInput | Prisma.PaymentHistoryUpdateManyWithWhereWithoutWalletInput[]
+  deleteMany?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
+}
+
+export type PaymentHistoryCreateWithoutWalletInput = {
   id?: string
   createdAt?: Date | string
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status?: $Enums.PaymentStatus
-  course: Prisma.CourseCreateNestedOneWithoutPayment_historiesInput
 }
 
-export type PaymentHistoryUncheckedCreateWithoutLearnerInput = {
+export type PaymentHistoryUncheckedCreateWithoutWalletInput = {
   id?: string
-  course_id: string
   createdAt?: Date | string
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status?: $Enums.PaymentStatus
 }
 
-export type PaymentHistoryCreateOrConnectWithoutLearnerInput = {
+export type PaymentHistoryCreateOrConnectWithoutWalletInput = {
   where: Prisma.PaymentHistoryWhereUniqueInput
-  create: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput>
+  create: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutWalletInput, Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput>
 }
 
-export type PaymentHistoryCreateManyLearnerInputEnvelope = {
-  data: Prisma.PaymentHistoryCreateManyLearnerInput | Prisma.PaymentHistoryCreateManyLearnerInput[]
+export type PaymentHistoryCreateManyWalletInputEnvelope = {
+  data: Prisma.PaymentHistoryCreateManyWalletInput | Prisma.PaymentHistoryCreateManyWalletInput[]
   skipDuplicates?: boolean
 }
 
-export type PaymentHistoryUpsertWithWhereUniqueWithoutLearnerInput = {
+export type PaymentHistoryUpsertWithWhereUniqueWithoutWalletInput = {
   where: Prisma.PaymentHistoryWhereUniqueInput
-  update: Prisma.XOR<Prisma.PaymentHistoryUpdateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedUpdateWithoutLearnerInput>
-  create: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedCreateWithoutLearnerInput>
+  update: Prisma.XOR<Prisma.PaymentHistoryUpdateWithoutWalletInput, Prisma.PaymentHistoryUncheckedUpdateWithoutWalletInput>
+  create: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutWalletInput, Prisma.PaymentHistoryUncheckedCreateWithoutWalletInput>
 }
 
-export type PaymentHistoryUpdateWithWhereUniqueWithoutLearnerInput = {
+export type PaymentHistoryUpdateWithWhereUniqueWithoutWalletInput = {
   where: Prisma.PaymentHistoryWhereUniqueInput
-  data: Prisma.XOR<Prisma.PaymentHistoryUpdateWithoutLearnerInput, Prisma.PaymentHistoryUncheckedUpdateWithoutLearnerInput>
+  data: Prisma.XOR<Prisma.PaymentHistoryUpdateWithoutWalletInput, Prisma.PaymentHistoryUncheckedUpdateWithoutWalletInput>
 }
 
-export type PaymentHistoryUpdateManyWithWhereWithoutLearnerInput = {
+export type PaymentHistoryUpdateManyWithWhereWithoutWalletInput = {
   where: Prisma.PaymentHistoryScalarWhereInput
-  data: Prisma.XOR<Prisma.PaymentHistoryUpdateManyMutationInput, Prisma.PaymentHistoryUncheckedUpdateManyWithoutLearnerInput>
+  data: Prisma.XOR<Prisma.PaymentHistoryUpdateManyMutationInput, Prisma.PaymentHistoryUncheckedUpdateManyWithoutWalletInput>
 }
 
 export type PaymentHistoryScalarWhereInput = {
@@ -548,125 +508,45 @@ export type PaymentHistoryScalarWhereInput = {
   OR?: Prisma.PaymentHistoryScalarWhereInput[]
   NOT?: Prisma.PaymentHistoryScalarWhereInput | Prisma.PaymentHistoryScalarWhereInput[]
   id?: Prisma.StringFilter<"PaymentHistory"> | string
-  course_id?: Prisma.StringFilter<"PaymentHistory"> | string
-  learner_id?: Prisma.StringFilter<"PaymentHistory"> | string
   createdAt?: Prisma.DateTimeFilter<"PaymentHistory"> | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFilter<"PaymentHistory"> | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFilter<"PaymentHistory"> | $Enums.PaymentMethod
   amount?: Prisma.IntFilter<"PaymentHistory"> | number
   status?: Prisma.EnumPaymentStatusFilter<"PaymentHistory"> | $Enums.PaymentStatus
+  wallet_id?: Prisma.StringFilter<"PaymentHistory"> | string
 }
 
-export type PaymentHistoryCreateWithoutCourseInput = {
+export type PaymentHistoryCreateManyWalletInput = {
   id?: string
   createdAt?: Date | string
-  payment_method: $Enums.PaymentMethod
-  amount: number
-  status?: $Enums.PaymentStatus
-  learner: Prisma.LearnerCreateNestedOneWithoutPayment_historiesInput
-}
-
-export type PaymentHistoryUncheckedCreateWithoutCourseInput = {
-  id?: string
-  learner_id: string
-  createdAt?: Date | string
+  payment_mode: $Enums.PaymentMode
   payment_method: $Enums.PaymentMethod
   amount: number
   status?: $Enums.PaymentStatus
 }
 
-export type PaymentHistoryCreateOrConnectWithoutCourseInput = {
-  where: Prisma.PaymentHistoryWhereUniqueInput
-  create: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutCourseInput, Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput>
-}
-
-export type PaymentHistoryCreateManyCourseInputEnvelope = {
-  data: Prisma.PaymentHistoryCreateManyCourseInput | Prisma.PaymentHistoryCreateManyCourseInput[]
-  skipDuplicates?: boolean
-}
-
-export type PaymentHistoryUpsertWithWhereUniqueWithoutCourseInput = {
-  where: Prisma.PaymentHistoryWhereUniqueInput
-  update: Prisma.XOR<Prisma.PaymentHistoryUpdateWithoutCourseInput, Prisma.PaymentHistoryUncheckedUpdateWithoutCourseInput>
-  create: Prisma.XOR<Prisma.PaymentHistoryCreateWithoutCourseInput, Prisma.PaymentHistoryUncheckedCreateWithoutCourseInput>
-}
-
-export type PaymentHistoryUpdateWithWhereUniqueWithoutCourseInput = {
-  where: Prisma.PaymentHistoryWhereUniqueInput
-  data: Prisma.XOR<Prisma.PaymentHistoryUpdateWithoutCourseInput, Prisma.PaymentHistoryUncheckedUpdateWithoutCourseInput>
-}
-
-export type PaymentHistoryUpdateManyWithWhereWithoutCourseInput = {
-  where: Prisma.PaymentHistoryScalarWhereInput
-  data: Prisma.XOR<Prisma.PaymentHistoryUpdateManyMutationInput, Prisma.PaymentHistoryUncheckedUpdateManyWithoutCourseInput>
-}
-
-export type PaymentHistoryCreateManyLearnerInput = {
-  id?: string
-  course_id: string
-  createdAt?: Date | string
-  payment_method: $Enums.PaymentMethod
-  amount: number
-  status?: $Enums.PaymentStatus
-}
-
-export type PaymentHistoryUpdateWithoutLearnerInput = {
+export type PaymentHistoryUpdateWithoutWalletInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-  course?: Prisma.CourseUpdateOneRequiredWithoutPayment_historiesNestedInput
-}
-
-export type PaymentHistoryUncheckedUpdateWithoutLearnerInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  course_id?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
 }
 
-export type PaymentHistoryUncheckedUpdateManyWithoutLearnerInput = {
+export type PaymentHistoryUncheckedUpdateWithoutWalletInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  course_id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
 }
 
-export type PaymentHistoryCreateManyCourseInput = {
-  id?: string
-  learner_id: string
-  createdAt?: Date | string
-  payment_method: $Enums.PaymentMethod
-  amount: number
-  status?: $Enums.PaymentStatus
-}
-
-export type PaymentHistoryUpdateWithoutCourseInput = {
+export type PaymentHistoryUncheckedUpdateManyWithoutWalletInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-  learner?: Prisma.LearnerUpdateOneRequiredWithoutPayment_historiesNestedInput
-}
-
-export type PaymentHistoryUncheckedUpdateWithoutCourseInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  learner_id?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-}
-
-export type PaymentHistoryUncheckedUpdateManyWithoutCourseInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  learner_id?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment_mode?: Prisma.EnumPaymentModeFieldUpdateOperationsInput | $Enums.PaymentMode
   payment_method?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
@@ -676,78 +556,71 @@ export type PaymentHistoryUncheckedUpdateManyWithoutCourseInput = {
 
 export type PaymentHistorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  course_id?: boolean
-  learner_id?: boolean
   createdAt?: boolean
+  payment_mode?: boolean
   payment_method?: boolean
   amount?: boolean
   status?: boolean
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
-  learner?: boolean | Prisma.LearnerDefaultArgs<ExtArgs>
+  wallet_id?: boolean
+  wallet?: boolean | Prisma.WalletDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["paymentHistory"]>
 
 export type PaymentHistorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  course_id?: boolean
-  learner_id?: boolean
   createdAt?: boolean
+  payment_mode?: boolean
   payment_method?: boolean
   amount?: boolean
   status?: boolean
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
-  learner?: boolean | Prisma.LearnerDefaultArgs<ExtArgs>
+  wallet_id?: boolean
+  wallet?: boolean | Prisma.WalletDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["paymentHistory"]>
 
 export type PaymentHistorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  course_id?: boolean
-  learner_id?: boolean
   createdAt?: boolean
+  payment_mode?: boolean
   payment_method?: boolean
   amount?: boolean
   status?: boolean
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
-  learner?: boolean | Prisma.LearnerDefaultArgs<ExtArgs>
+  wallet_id?: boolean
+  wallet?: boolean | Prisma.WalletDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["paymentHistory"]>
 
 export type PaymentHistorySelectScalar = {
   id?: boolean
-  course_id?: boolean
-  learner_id?: boolean
   createdAt?: boolean
+  payment_mode?: boolean
   payment_method?: boolean
   amount?: boolean
   status?: boolean
+  wallet_id?: boolean
 }
 
-export type PaymentHistoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "course_id" | "learner_id" | "createdAt" | "payment_method" | "amount" | "status", ExtArgs["result"]["paymentHistory"]>
+export type PaymentHistoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "payment_mode" | "payment_method" | "amount" | "status" | "wallet_id", ExtArgs["result"]["paymentHistory"]>
 export type PaymentHistoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
-  learner?: boolean | Prisma.LearnerDefaultArgs<ExtArgs>
+  wallet?: boolean | Prisma.WalletDefaultArgs<ExtArgs>
 }
 export type PaymentHistoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
-  learner?: boolean | Prisma.LearnerDefaultArgs<ExtArgs>
+  wallet?: boolean | Prisma.WalletDefaultArgs<ExtArgs>
 }
 export type PaymentHistoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
-  learner?: boolean | Prisma.LearnerDefaultArgs<ExtArgs>
+  wallet?: boolean | Prisma.WalletDefaultArgs<ExtArgs>
 }
 
 export type $PaymentHistoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PaymentHistory"
   objects: {
-    course: Prisma.$CoursePayload<ExtArgs>
-    learner: Prisma.$LearnerPayload<ExtArgs>
+    wallet: Prisma.$WalletPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    course_id: string
-    learner_id: string
     createdAt: Date
+    payment_mode: $Enums.PaymentMode
     payment_method: $Enums.PaymentMethod
     amount: number
     status: $Enums.PaymentStatus
+    wallet_id: string
   }, ExtArgs["result"]["paymentHistory"]>
   composites: {}
 }
@@ -1142,8 +1015,7 @@ readonly fields: PaymentHistoryFieldRefs;
  */
 export interface Prisma__PaymentHistoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  course<T extends Prisma.CourseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CourseDefaultArgs<ExtArgs>>): Prisma.Prisma__CourseClient<runtime.Types.Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  learner<T extends Prisma.LearnerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LearnerDefaultArgs<ExtArgs>>): Prisma.Prisma__LearnerClient<runtime.Types.Result.GetResult<Prisma.$LearnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  wallet<T extends Prisma.WalletDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WalletDefaultArgs<ExtArgs>>): Prisma.Prisma__WalletClient<runtime.Types.Result.GetResult<Prisma.$WalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1174,12 +1046,12 @@ export interface Prisma__PaymentHistoryClient<T, Null = never, ExtArgs extends r
  */
 export interface PaymentHistoryFieldRefs {
   readonly id: Prisma.FieldRef<"PaymentHistory", 'String'>
-  readonly course_id: Prisma.FieldRef<"PaymentHistory", 'String'>
-  readonly learner_id: Prisma.FieldRef<"PaymentHistory", 'String'>
   readonly createdAt: Prisma.FieldRef<"PaymentHistory", 'DateTime'>
+  readonly payment_mode: Prisma.FieldRef<"PaymentHistory", 'PaymentMode'>
   readonly payment_method: Prisma.FieldRef<"PaymentHistory", 'PaymentMethod'>
   readonly amount: Prisma.FieldRef<"PaymentHistory", 'Int'>
   readonly status: Prisma.FieldRef<"PaymentHistory", 'PaymentStatus'>
+  readonly wallet_id: Prisma.FieldRef<"PaymentHistory", 'String'>
 }
     
 

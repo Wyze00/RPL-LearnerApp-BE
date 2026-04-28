@@ -9,13 +9,13 @@
 * 🟢 You can import this file directly.
 */
 
-export const PaymentMethod = {
-  CREDIT_CARD: 'CREDIT_CARD',
-  DEBIT_CARD: 'DEBIT_CARD',
-  E_WALLET: 'E_WALLET'
+export const PaymentMode = {
+  TOPUP: 'TOPUP',
+  WITHDRAW: 'WITHDRAW',
+  COURSE: 'COURSE'
 } as const
 
-export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+export type PaymentMode = (typeof PaymentMode)[keyof typeof PaymentMode]
 
 
 export const PaymentStatus = {
@@ -25,3 +25,13 @@ export const PaymentStatus = {
 } as const
 
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+
+
+export const PaymentMethod = {
+  CARD: 'CARD',
+  EWALLET: 'EWALLET',
+  CASH: 'CASH',
+  WALLET: 'WALLET'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]

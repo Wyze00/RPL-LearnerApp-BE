@@ -59,7 +59,8 @@ export const ModelName = {
   LearnerCourseVideoEnroll: 'LearnerCourseVideoEnroll',
   Course: 'Course',
   Video: 'Video',
-  PaymentHistory: 'PaymentHistory'
+  PaymentHistory: 'PaymentHistory',
+  Wallet: 'Wallet'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -163,15 +164,24 @@ export type VideoScalarFieldEnum = (typeof VideoScalarFieldEnum)[keyof typeof Vi
 
 export const PaymentHistoryScalarFieldEnum = {
   id: 'id',
-  course_id: 'course_id',
-  learner_id: 'learner_id',
   createdAt: 'createdAt',
+  payment_mode: 'payment_mode',
   payment_method: 'payment_method',
   amount: 'amount',
-  status: 'status'
+  status: 'status',
+  wallet_id: 'wallet_id'
 } as const
 
 export type PaymentHistoryScalarFieldEnum = (typeof PaymentHistoryScalarFieldEnum)[keyof typeof PaymentHistoryScalarFieldEnum]
+
+
+export const WalletScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  user_id: 'user_id'
+} as const
+
+export type WalletScalarFieldEnum = (typeof WalletScalarFieldEnum)[keyof typeof WalletScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -23,6 +23,7 @@ model User {
   admin      Admin?
   learner    Learner?
   instructor Instructor?
+  wallet     Wallet?
 
   @@map("users")
 }
@@ -40,8 +41,7 @@ model Learner {
   id      String @id @default(uuid())
   user_id String @unique
 
-  coursesTaken      LearnerCourseEnroll[]
-  payment_histories PaymentHistory[]
+  coursesTaken LearnerCourseEnroll[]
 
   user User @relation(fields: [user_id], references: [id])
 
@@ -92,10 +92,9 @@ model Course {
   preview_video_link String @db.VarChar(255)
   price              Int    @default(0)
 
-  instructors       Instructor            @relation(fields: [instructor_id], references: [id])
-  videos            Video[]
-  enrolls           LearnerCourseEnroll[]
-  payment_histories PaymentHistory[]
+  instructors Instructor            @relation(fields: [instructor_id], references: [id])
+  videos      Video[]
+  enrolls     LearnerCourseEnroll[]
 
   @@map("courses")
 }
@@ -116,10 +115,10 @@ model Video {
   @@map("videos")
 }
 
-enum PaymentMethod {
-  CREDIT_CARD
-  DEBIT_CARD
-  E_WALLET
+enum PaymentMode {
+  TOPUP
+  WITHDRAW
+  COURSE
 }
 
 enum PaymentStatus {
@@ -128,17 +127,34 @@ enum PaymentStatus {
   FAILED
 }
 
+enum PaymentMethod {
+  CARD
+  EWALLET
+  CASH
+  WALLET
+}
+
 model PaymentHistory {
   id             String        @id @default(uuid())
-  course_id      String
-  learner_id     String
   createdAt      DateTime      @default(now())
+  payment_mode   PaymentMode
   payment_method PaymentMethod
   amount         Int
   status         PaymentStatus @default(PENDING)
 
-  course  Course  @relation(fields: [course_id], references: [id])
-  learner Learner @relation(fields: [learner_id], references: [id])
+  wallet_id String
+  wallet    Wallet @relation(fields: [wallet_id], references: [id])
 
   @@map("payment_history")
+}
+
+model Wallet {
+  id     String @id @default(uuid())
+  amount Int    @default(0)
+
+  user_id          String           @unique
+  user             User             @relation(fields: [user_id], references: [id])
+  paymentHistories PaymentHistory[]
+
+  @@map("wallets")
 }

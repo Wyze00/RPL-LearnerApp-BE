@@ -3,7 +3,6 @@ import { ZodUtil } from "../utils/zod.util.js";
 import { CourseValidation } from "../validations/course.validation.js";
 import type {
   GetCourseQuery,
-  EnrollCourseRequest,
   CreateCourseRequest,
   UpdateCourseRequest,
   CreateVideoRequest,
@@ -76,16 +75,10 @@ export class CourseService {
   static async enroll(
     courseId: string,
     username: string,
-    request: EnrollCourseRequest,
   ) {
-    const validatedRequest = ZodUtil.validate(
-      request,
-      CourseValidation.ENROLLREQUEST,
-    );
-
     const user = await prismaClient.user.findUnique({
       where: { username },
-      include: { learner: true },
+      include: { learner: true, wallet: true },
     });
 
     if (!user || !user.learner) {
@@ -96,6 +89,15 @@ export class CourseService {
       where: { id: courseId },
       include: {
         videos: true,
+        instructors: {
+          include: {
+            user: {
+              include: {
+                wallet: true,
+              }
+            },
+          }
+        }
       }
     });
 
@@ -115,6 +117,10 @@ export class CourseService {
 
     if (existingEnrollment) {
       throw new BadRequestError("Learner is already enrolled in this course");
+    }
+
+    if (user.wallet!.amount < course.price) {
+      throw new BadRequestError('Wallet tidak mencukupi');
     }
 
     const validLearner = user.learner;
@@ -141,13 +147,43 @@ export class CourseService {
         data: manyData
       })
 
+      if (user.id !== course.instructors.user_id) {
+        await prismaClient.wallet.update({
+          where: {
+            id: user.wallet!.id
+          }, 
+          data: {
+            amount: user.wallet!.amount - course.price 
+          }
+        })
+  
+        await prisma.wallet.update({
+          where: {
+            user_id: course.instructors.user.id
+          }, 
+          data: {
+            amount: course.instructors.user.wallet!.amount + (course.price * 0.95) 
+          }
+        })
+      }
+
       await prisma.paymentHistory.create({
         data: {
-          learner_id: validLearner.id,
-          course_id: course.id,
-          payment_method: validatedRequest.paymentMethod as any,
+          payment_method: 'WALLET',
           amount: course.price,
           status: "SUCCESS",
+          payment_mode: 'COURSE',
+          wallet_id: user.wallet!.id,
+        },
+      });
+
+      await prisma.paymentHistory.create({
+        data: {
+          payment_method: 'WALLET',
+          amount: course.price,
+          status: "SUCCESS",
+          payment_mode: 'TOPUP',
+          wallet_id: course.instructors.user.wallet!.id,
         },
       });
 

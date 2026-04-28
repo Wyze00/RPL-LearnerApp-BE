@@ -5,9 +5,6 @@ export interface GetCourseQuery {
     take?: number;
 }
 
-export interface EnrollCourseRequest {
-    paymentMethod: string;
-}
 
 export interface CreateCourseRequest {
   title: string;

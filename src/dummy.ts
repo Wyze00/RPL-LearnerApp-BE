@@ -21,6 +21,11 @@ async function createDummy() {
                             id: 'instructor1',
                         }
                     },
+                    wallet: {
+                        create: {
+                            id: 'wallet1'
+                        }
+                    }
                 }
     })
 
@@ -41,6 +46,11 @@ async function createDummy() {
                             id: 'instructor2',
                         }
                     },
+                    wallet: {
+                        create: {
+                            id: 'wallet2'
+                        }
+                    }
                 }
     })
 
@@ -66,6 +76,11 @@ async function createDummy() {
                             id: 'instructor3',
                         }
                     },
+                    wallet: {
+                        create: {
+                            id: 'wallet3'
+                        }
+                    }
                 }
     })
 

@@ -237,14 +237,6 @@ Url Param :
 
 - id: uuid
 
-Request Body
-
-```json
-{
-  "paymentMethod": "string"
-}
-```
-
 Response Body 200
 
 ```json
@@ -402,12 +394,11 @@ Response Body 200
   "data": [
     {
       "id": "string",
-      "course_id": "string",
-      "learner_id": "string",
       "createdAt": "string",
       "payment_method": "string",
+      "payment_mode": "string",
       "amount": "number",
-      "status": "string"
+      "status": "string",
     }
   ]
 }
@@ -613,5 +604,78 @@ Response Body 200
       "email": "string"
     }
   ]
+}
+```
+
+### GET /api/admin/wallet
+
+Header :
+
+- Cookie: token
+
+Response Body 200
+
+```json
+{
+  "data": [
+    {
+      "id": "string",
+      "amount": "number"
+    }
+  ]
+}
+```
+
+### POST /api/admin/topup
+
+Header :
+
+- Cookie: token
+
+Request Body 
+
+```json
+{
+  "amount": "number",
+  "paymentMethod": "string"
+}
+```
+
+
+Response Body 200
+
+```json
+{
+  "data": {
+    "id": "string",
+    "amount": "number"
+  }
+}
+```
+
+### POST /api/admin/withdraw
+
+Header :
+
+- Cookie: token
+
+Request Body 
+
+```json
+{
+  "amount": "number",
+  "paymentMethod": "string"
+}
+```
+
+
+Response Body 200
+
+```json
+{
+  "data": {
+    "id": "string",
+    "amount": "number"
+  }
 }
 ```

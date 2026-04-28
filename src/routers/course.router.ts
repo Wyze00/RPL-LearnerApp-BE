@@ -2,7 +2,6 @@ import type { Request, Response, Router, NextFunction } from "express";
 import express from "express";
 import { CourseService } from "../services/course.service.js";
 import type {
-  EnrollCourseRequest,
   GetCourseQuery,
   UpdateCourseRequest,
   CreateVideoRequest,
@@ -71,12 +70,10 @@ export class CourseRouterWithAuth {
       "/:id/enroll",
       async (req: RequestWithUsername, res: Response, next: NextFunction) => {
         try {
-          const data = req.body as EnrollCourseRequest;
           const username = req.username!;
           const response = await CourseService.enroll(
             req.params.id as string,
             username,
-            data,
           );
 
           return res.status(200).json({

@@ -41,7 +41,7 @@ export class InstructorService {
 
     const user = await prismaClient.user.findUnique({
       where: { username },
-      include: { instructor: true },
+      include: { instructor: true, wallet: true },
     });
 
     if (!user || !user.instructor) {
@@ -56,24 +56,18 @@ export class InstructorService {
 
     const stats = await prismaClient.paymentHistory.findMany({
       where: {
-        course: {
-          instructor_id: user.instructor.id,
-        },
         createdAt: {
           gte: startDate,
           lt: endDate,
         },
+        wallet: {
+          id: user.wallet!.id,
+        },
+        payment_mode: 'TOPUP',
+        payment_method: 'WALLET'
       },
     });
 
-    return stats.map(stat => ({
-      id: stat.id,
-      course_id: stat.course_id,
-      learner_id: stat.learner_id,
-      createdAt: stat.createdAt,
-      payment_method: stat.payment_method,
-      amount: stat.amount,
-      status: stat.status,
-    }));
+    return stats;
   }
 }
